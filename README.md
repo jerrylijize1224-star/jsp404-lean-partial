@@ -1,20 +1,26 @@
 # JSP-000404: verified partial Lean development
 
-Published by GitHub account `jerrylijize1224-star`, from an AI-assisted development in the project owner's Codex session.
+Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-18. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-19. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
 unproved proposition `Prize.JSP404.SendovClaim` in `Prize/JSP404/Target.lean`.
 It is not presented as a theorem.
 
-## Download the reproducible snapshot
+## Download the current snapshot
 
-[Download source, pinned dependencies, notes, and verification logs](jsp404-partial-20260918.zip). Extract the ZIP and run the reproduction commands below inside its top-level directory.
+[Download the 2026-09-19 four-centre snapshot](jsp404-four-centre-20260919.zip) · [SHA-256](jsp404-four-centre-20260919.zip.sha256).
 
-[Archive SHA-256](jsp404-partial-20260918.zip.sha256): `d620eb4b1a9e6044c7971ae2dad3362bbe0abc1e52f74f7331e31ede2b5bb4e0`.
-The archive includes a per-file manifest. Its contents are the original local snapshot, including the publication-status note written before uploading. File paths below refer to the extracted snapshot.
+Archive SHA-256: `ece15485e0b950a8992ce54839f961b9a152fa80f9ae3799497517dece742205`.
+Extract the ZIP and run the commands below inside the extracted project directory.
+File paths below refer to this directory. The archive includes a per-file manifest.
+
+This update completes the four-point incidence classification, proves equivalence of both geometric cases to one symmetric local expression, and proves label-independent four-point set bounds. It does **not** complete the projective-gap interpretation or the full problem.
+
+[Earlier 2026-09-18 snapshot](jsp404-partial-20260918.zip) is retained unchanged.
+The sealed archives contain publication notes written before their upload; this repository records their subsequent publication.
 
 ## Verified scope
 
@@ -27,6 +33,10 @@ The archive includes a per-file manifest. Its contents are the original local sn
 - Four-centre capacity bounds, separately for a triangle with an interior
   centre and a convex quadrilateral. Each case has an arithmetic proof and
   an interface deriving its angle data from actual Euclidean geometry.
+- An exhaustive four-point geometric classification via Radon's theorem,
+  and a common label-independent angle expression whose low- and high-band
+  bounds follow for every four-point set with the stated actual angle cap.
+  General position is derived from the cap, not imposed as a new hypothesis.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -43,6 +53,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Interior geometry | `FourCentreInteriorGeometry.lean`: `InteriorFourGeometry.capacity_low`, `.capacity_high` |
 | Convex arithmetic | `FourCentreConvex.lean`: `ConvexFourAngleData.capacity_low`, `.capacity_high` |
 | Convex geometry | `FourCentreConvexGeometry.lean`: `ConvexFourGeometry.capacity_low`, `.capacity_high` |
+| Exhaustive classification | `FourCentreClassification.lean`: `four_centre_geometry_cases_of_angle_bound` |
+| Common local expression | `FourCentreLocalIndex.lean`: `InteriorFourGeometry.labelled_capacity_eq`, `ConvexFourGeometry.labelled_capacity_eq` |
+| Point-set expression and bounds | `FourCentreCapacity.lean`: `fourCentreCapacity_eq_labelled`, `fourCentreCapacity_low`, `fourCentreCapacity_high` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -52,11 +65,11 @@ it is not a claim of mathematical novelty or first formalization.
 ## Remaining gaps
 
 1. A uniform cyclic projective-direction-gap definition and its equivalence
-   to the case-specific four-centre capacity formulas.
-2. A complete reindexing/classification interface for arbitrary four centres.
-3. The connection from generalized point-cluster sizes to their local capacities.
-4. A valid general counting argument for five or more centres.
-5. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
+   to the common four-centre angle expression. The expression is explicitly
+   defined and bounded, but its point-cluster interpretation is not assumed.
+2. The connection from generalized point-cluster sizes to their local capacities.
+3. A valid general counting argument for five or more centres.
+4. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
 
 Some existing auxiliary theorems have explicit hypotheses that are not yet
 established for the general construction; in particular see
@@ -82,8 +95,8 @@ The source project was checked with `./scripts/lake.sh build`, followed by
 `./scripts/lake.sh env lean Prize/Audit.lean`; both exited successfully.
 The wrapper only selects the locally installed pinned toolchain.
 The included logs are `verification/build.log` and `verification/axioms.log`.
-The final build reported 2532 jobs including dependencies; this is not a
-count of new theorems. This snapshot has not received an independent external
+Build job counts include dependencies and are not counts of new theorems.
+This snapshot has not received an independent external
 review or a fresh-machine rebuild.
 
 The audited theorem dependencies are only `propext`, `Classical.choice`, and
@@ -132,7 +145,10 @@ award eligibility, or exclusive right to the problem is asserted.
 
 ## Publication status
 
-This repository publishes a standalone partial research snapshot. The GitHub commit records the published version; no proof of earlier priority is asserted. The prize repository's
+This repository publishes the 2026-09-19 standalone research snapshot. An earlier version
+is public in [the project owner's repository](https://github.com/jerrylijize1224-star/jsp404-lean-partial),
+at commit `317441dd29d7a4975be4a89dc7802be2567f86cb`.
+The repository history records this revision separately from that earlier commit. The prize repository's
 [current contribution rules](https://github.com/TheJustinSunPrize/awards/blob/main/CONTRIBUTING.md)
 accept complete original-problem solutions, not intermediate formalizations.
 This snapshot is therefore intended for the project owner's own repository,
