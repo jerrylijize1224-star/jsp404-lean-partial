@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-19. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-20. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,16 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-19 four-centre snapshot](jsp404-four-centre-20260919.zip) · [SHA-256](jsp404-four-centre-20260919.zip.sha256).
+[Download the 2026-09-20 projective-gap snapshot](jsp404-projective-gaps-20260920.zip) · [SHA-256](jsp404-projective-gaps-20260920.zip.sha256).
 
-Archive SHA-256: `ece15485e0b950a8992ce54839f961b9a152fa80f9ae3799497517dece742205`.
-Extract the ZIP and run the commands below inside the extracted project directory.
-File paths below refer to this directory. The archive includes a per-file manifest.
+Archive SHA-256: `ef1b8f29c24103a006da3875924be117f5f03d686e746564d73f409bab47e037`.
+Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update completes the four-point incidence classification, proves equivalence of both geometric cases to one symmetric local expression, and proves label-independent four-point set bounds. It does **not** complete the projective-gap interpretation or the full problem.
+This update proves existence of actual sorted projective direction charts and identifies the four-centre capacity with the sum of their cyclic-gap capacities. Positive gaps sum to a half-turn, and their index is independent of the chosen chart. The generalized point-cluster cardinality link and arbitrary-centre proof remain unfinished.
 
-[Earlier 2026-09-18 snapshot](jsp404-partial-20260918.zip) is retained unchanged.
-The sealed archives contain publication notes written before their upload; this repository records their subsequent publication.
+Earlier snapshots are preserved: [2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -37,6 +35,10 @@ The sealed archives contain publication notes written before their upload; this 
   and a common label-independent angle expression whose low- and high-band
   bounds follow for every four-point set with the stated actual angle cap.
   General position is derived from the cap, not imposed as a new hypothesis.
+- Actual projective coordinates and sorted cyclic gaps for three outgoing
+  directions at a centre. Their existence, positivity, sum, and equality to
+  the common local index are proved, including independence from ray choices.
+  This identifies the four-centre expression with actual cyclic-gap capacity.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -56,6 +58,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Exhaustive classification | `FourCentreClassification.lean`: `four_centre_geometry_cases_of_angle_bound` |
 | Common local expression | `FourCentreLocalIndex.lean`: `InteriorFourGeometry.labelled_capacity_eq`, `ConvexFourGeometry.labelled_capacity_eq` |
 | Point-set expression and bounds | `FourCentreCapacity.lean`: `fourCentreCapacity_eq_labelled`, `fourCentreCapacity_low`, `fourCentreCapacity_high` |
+| Actual projective coordinates | `ProjectiveCoordinates.lean`: `exists_projective_coordinates` |
+| Sorted actual direction charts | `ThreeDirectionChart.lean`: `exists_pointDirectionChart`, `SortedThreeDirectionChart.index_eq_gaps` |
+| Cyclic gaps and four-centre capacity | `FourCentreProjectiveGaps.lean`: `exists_four_direction_charts`, `projective_gapIndex_independent`, `fourCentreCapacity_eq_projectiveGaps` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -64,12 +69,12 @@ it is not a claim of mathematical novelty or first formalization.
 
 ## Remaining gaps
 
-1. A uniform cyclic projective-direction-gap definition and its equivalence
-   to the common four-centre angle expression. The expression is explicitly
-   defined and bounded, but its point-cluster interpretation is not assumed.
-2. The connection from generalized point-cluster sizes to their local capacities.
-3. A valid general counting argument for five or more centres.
-4. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
+1. The connection from generalized point-cluster sizes to their local capacities,
+   and the full reduction from ordinary to generalized configurations.
+2. A uniform arbitrary-size projective-gap model and a valid general counting
+   argument for five or more centres. The three-direction/four-centre case is
+   now connected to actual sorted cyclic gaps.
+3. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
 
 Some existing auxiliary theorems have explicit hypotheses that are not yet
 established for the general construction; in particular see
@@ -100,7 +105,7 @@ This snapshot has not received an independent external
 review or a fresh-machine rebuild.
 
 The audited theorem dependencies are only `propext`, `Classical.choice`, and
-`Quot.sound`. The project Lean source contains no `sorry`, `admit`, added
+`Quot.sound`. The project Lean proofs use no `sorry`, `admit`, added
 axiom declarations, or `native_decide`. `MANIFEST.sha256` records the exact
 snapshot contents, except the manifest itself. The archive hash is stored
 beside the archive. A local hash is an integrity record, not an independently
@@ -145,7 +150,7 @@ award eligibility, or exclusive right to the problem is asserted.
 
 ## Publication status
 
-This repository publishes the 2026-09-19 standalone research snapshot. An earlier version
+This repository publishes the 2026-09-20 standalone research snapshot. An earlier version
 is public in [the project owner's repository](https://github.com/jerrylijize1224-star/jsp404-lean-partial),
 at commit `317441dd29d7a4975be4a89dc7802be2567f86cb`.
 The repository history records this revision separately from that earlier commit. The prize repository's
