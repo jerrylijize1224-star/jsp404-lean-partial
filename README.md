@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-20 projective-gap snapshot](jsp404-projective-gaps-20260920.zip) · [SHA-256](jsp404-projective-gaps-20260920.zip.sha256).
+[Download the 2026-09-20 cluster-counting snapshot](jsp404-cluster-counting-20260920.zip) · [SHA-256](jsp404-cluster-counting-20260920.zip.sha256).
 
-Archive SHA-256: `ef1b8f29c24103a006da3875924be117f5f03d686e746564d73f409bab47e037`.
+Archive SHA-256: `1d47247be2a447716d98fd2fe39c84caeaff782307bc9c64f80a420965d7eb84`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves existence of actual sorted projective direction charts and identifies the four-centre capacity with the sum of their cyclic-gap capacities. Positive gaps sum to a half-turn, and their index is independent of the chosen chart. The generalized point-cluster cardinality link and arbitrary-centre proof remain unfinished.
+This update extends the projective-gap checkpoint with generalized-direction counting, external-direction angular exclusion, and constructed thin-sector covers of allowed gap intervals. Given allowed coordinates for internal directions, the corresponding point-count bound is proved. Deriving those coordinates from actual centre data remains unfinished, as do the arbitrary-centre argument and full classification.
 
-Earlier snapshots are preserved: [2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -39,6 +39,12 @@ Earlier snapshots are preserved: [2026-09-19](jsp404-four-centre-20260919.zip), 
   directions at a centre. Their existence, positivity, sum, and equality to
   the common local index are proved, including independence from ray choices.
   This identifies the four-centre expression with actual cyclic-gap capacity.
+- Counting for abstract generalized directions, restriction to clusters, and
+  angular exclusion from external centre directions. Closed allowed gap
+  intervals have explicitly constructed strictly narrow covers, including
+  integer endpoints. Given allowed gap coordinates for all internal lines,
+  the resulting actual sectors prove the corresponding power-of-two bound.
+  Deriving those coordinates from arbitrary centre data remains unproved.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -69,8 +75,10 @@ it is not a claim of mathematical novelty or first formalization.
 
 ## Remaining gaps
 
-1. The connection from generalized point-cluster sizes to their local capacities,
-   and the full reduction from ordinary to generalized configurations.
+1. Derive the allowed internal gap coordinates from the actual centre directions,
+   including the cyclic gap across pi/zero. The conditional sector counting and
+   external-direction angular exclusion are now proved, but the complete
+   cluster-capacity link and reduction to generalized configurations remain open.
 2. A uniform arbitrary-size projective-gap model and a valid general counting
    argument for five or more centres. The three-direction/four-centre case is
    now connected to actual sorted cyclic gaps.
@@ -150,10 +158,11 @@ award eligibility, or exclusive right to the problem is asserted.
 
 ## Publication status
 
-This repository publishes the 2026-09-20 standalone research snapshot. An earlier version
+This file prepares the next standalone research snapshot. An earlier version
 is public in [the project owner's repository](https://github.com/jerrylijize1224-star/jsp404-lean-partial),
 at commit `317441dd29d7a4975be4a89dc7802be2567f86cb`.
-The repository history records this revision separately from that earlier commit. The prize repository's
+The publication record for this revision must be checked separately from that
+earlier commit. The prize repository's
 [current contribution rules](https://github.com/TheJustinSunPrize/awards/blob/main/CONTRIBUTING.md)
 accept complete original-problem solutions, not intermediate formalizations.
 This snapshot is therefore intended for the project owner's own repository,
