@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-20. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-21. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-20 cluster-counting snapshot](jsp404-cluster-counting-20260920.zip) · [SHA-256](jsp404-cluster-counting-20260920.zip.sha256).
+[Download the 2026-09-21 four-cluster snapshot](jsp404-four-clusters-20260921.zip) · [SHA-256](jsp404-four-clusters-20260921.zip.sha256).
 
-Archive SHA-256: `1d47247be2a447716d98fd2fe39c84caeaff782307bc9c64f80a420965d7eb84`.
+Archive SHA-256: `1dabdb6d4ec158fca3f2fdd38e0d4d50970d59211d59a5de1f8cc01df1de5f98`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update extends the projective-gap checkpoint with generalized-direction counting, external-direction angular exclusion, and constructed thin-sector covers of allowed gap intervals. Given allowed coordinates for internal directions, the corresponding point-count bound is proved. Deriving those coordinates from actual centre data remains unfinished, as do the arbitrary-centre argument and full classification.
+This update proves allowed coordinates from three actual anchor directions, including the cyclic half-turn boundary. It then connects the cardinalities of four occupied clusters to the actual four-centre capacity and proves both parameter-band bounds. The model assumptions are explicit; reduction of arbitrary configurations, five or more centres, and the full classification remain unproved.
 
-Earlier snapshots are preserved: [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -44,7 +44,13 @@ Earlier snapshots are preserved: [projective gaps, 2026-09-20](jsp404-projective
   intervals have explicitly constructed strictly narrow covers, including
   integer endpoints. Given allowed gap coordinates for all internal lines,
   the resulting actual sectors prove the corresponding power-of-two bound.
-  Deriving those coordinates from arbitrary centre data remains unproved.
+  For three actual anchor directions, existence of allowed coordinates is now
+  proved, including the cyclic gap across pi/zero.
+- A four-cluster model with four distinct actual centres, occupied clusters,
+  nonzero antisymmetric leaf directions, and cross-cluster directions equal to
+  centre differences. The angle bound implies the centre angle cap and the
+  required internal direction separation. Each cluster's cardinality is bounded
+  by its local capacity, and their total satisfies both four-centre bands.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -67,6 +73,8 @@ Main declarations (namespace `Prize.JSP404`):
 | Actual projective coordinates | `ProjectiveCoordinates.lean`: `exists_projective_coordinates` |
 | Sorted actual direction charts | `ThreeDirectionChart.lean`: `exists_pointDirectionChart`, `SortedThreeDirectionChart.index_eq_gaps` |
 | Cyclic gaps and four-centre capacity | `FourCentreProjectiveGaps.lean`: `exists_four_direction_charts`, `projective_gapIndex_independent`, `fourCentreCapacity_eq_projectiveGaps` |
+| Allowed coordinates from actual anchors | `ThreeGapAllowed.lean`: `SortedThreeDirectionChart.exists_allowed_coordinates`, `GeneralizedDirections.cluster_card_le_gap_capacity` |
+| Four-cluster cardinality | `FourClusterCounting.lean`: `FourClusterModel.card_le_capacity`, `.card_low`, `.card_high` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -75,10 +83,10 @@ it is not a claim of mathematical novelty or first formalization.
 
 ## Remaining gaps
 
-1. Derive the allowed internal gap coordinates from the actual centre directions,
-   including the cyclic gap across pi/zero. The conditional sector counting and
-   external-direction angular exclusion are now proved, but the complete
-   cluster-capacity link and reduction to generalized configurations remain open.
+1. A full reduction from arbitrary ordinary configurations to the generalized
+   configurations used by the argument. The four-cluster model now has a complete
+   cluster-capacity link; no assertion that all configurations reduce to four
+   clusters is made.
 2. A uniform arbitrary-size projective-gap model and a valid general counting
    argument for five or more centres. The three-direction/four-centre case is
    now connected to actual sorted cyclic gaps.
