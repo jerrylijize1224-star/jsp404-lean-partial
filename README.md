@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-21 four-cluster snapshot](jsp404-four-clusters-20260921.zip) · [SHA-256](jsp404-four-clusters-20260921.zip.sha256).
+[Download the 2026-09-21 finite-cluster snapshot](jsp404-finite-clusters-20260921.zip) · [SHA-256](jsp404-finite-clusters-20260921.zip.sha256).
 
-Archive SHA-256: `1dabdb6d4ec158fca3f2fdd38e0d4d50970d59211d59a5de1f8cc01df1de5f98`.
+Archive SHA-256: `de958e3cb79ed86376330bc6e8cfd4693ee13246d123ec95811c6484c9bcbd48`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves allowed coordinates from three actual anchor directions, including the cyclic half-turn boundary. It then connects the cardinalities of four occupied clusters to the actual four-centre capacity and proves both parameter-band bounds. The model assumptions are explicit; reduction of arbitrary configurations, five or more centres, and the full classification remain unproved.
+This update generalizes the local counting connection to every finite occupied-centre count at least two. Actual sorted projective charts exist; cyclic gaps are positive, sum to pi, and are independent of chart choices. Angular restrictions give allowed coordinates and bound each cluster by its local capacity. Total cardinality is bounded by the sum of those capacities. The sharp bound on that sum for five or more centres, general extremal reduction, and the full classification remain unproved.
 
-Earlier snapshots are preserved: [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -51,6 +51,13 @@ Earlier snapshots are preserved: [conditional cluster counting, 2026-09-20](jsp4
   centre differences. The angle bound implies the centre angle cap and the
   required internal direction separation. Each cluster's cardinality is bounded
   by its local capacity, and their total satisfies both four-centre bands.
+- For any finite number of occupied centres at least two, actual sorted
+  direction charts exist and their cyclic gaps are positive and sum to pi.
+  Internal allowed coordinates follow from the angular restrictions. Cluster
+  cardinalities are bounded by their local capacities and total cardinality by
+  the sum of those capacities. The sorted angles, cyclic gaps, and local indices
+  are independent of the chosen valid chart. The sharp bound on this sum for five or more
+  centres remains unproved.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -75,6 +82,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Cyclic gaps and four-centre capacity | `FourCentreProjectiveGaps.lean`: `exists_four_direction_charts`, `projective_gapIndex_independent`, `fourCentreCapacity_eq_projectiveGaps` |
 | Allowed coordinates from actual anchors | `ThreeGapAllowed.lean`: `SortedThreeDirectionChart.exists_allowed_coordinates`, `GeneralizedDirections.cluster_card_le_gap_capacity` |
 | Four-cluster cardinality | `FourClusterCounting.lean`: `FourClusterModel.card_le_capacity`, `.card_low`, `.card_high` |
+| Arbitrarily many actual directions | `FiniteDirectionChart.lean`: `exists_sortedDirectionChart`, `SortedDirectionChart.gap_sum`, `.exists_allowed_coordinates` |
+| Arbitrary finite clusters, local bound | `FiniteClusterCounting.lean`: `FiniteClusterModel.cluster_card_le_gapIndex`, `.exists_capacity_bound` |
+| Independence from chart choices | `FiniteDirectionInvariance.lean`: `SortedDirectionChart.theta_unique`, `.gap_unique`, `.gapIndex_unique` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -87,9 +97,9 @@ it is not a claim of mathematical novelty or first formalization.
    configurations used by the argument. The four-cluster model now has a complete
    cluster-capacity link; no assertion that all configurations reduce to four
    clusters is made.
-2. A uniform arbitrary-size projective-gap model and a valid general counting
-   argument for five or more centres. The three-direction/four-centre case is
-   now connected to actual sorted cyclic gaps.
+2. A sharp total-capacity inequality for five or more centres. The arbitrary-size
+   projective-gap model and the local cluster-to-capacity counting are now
+   provided, but their sum has not been bounded by the claimed sharp bands.
 3. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
 
 Some existing auxiliary theorems have explicit hypotheses that are not yet
