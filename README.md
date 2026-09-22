@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-22 gap-restriction snapshot](jsp404-gap-restriction-20260922.zip) · [SHA-256](jsp404-gap-restriction-20260922.zip.sha256).
+[Download the 2026-09-22 convex-position snapshot](jsp404-convex-position-20260922.zip) · [SHA-256](jsp404-convex-position-20260922.zip.sha256).
 
-Archive SHA-256: `ef51d31c5bab1a0292b2de62dff8499339e2032b7071fdf712c651a5d3cdfc3d`.
+Archive SHA-256: `bccd4cb51edabe89baecf5773f8e6a93d4c295c3ad06275aae2c5d29f8ac299f`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update derives triangle restriction from actual cyclic gaps for arbitrary finite occupied-centre models. It proves individual local exponent bounds and the limits on how many exponents can reach n-1 in the two parameter bands. These results remove an earlier explicit triangle-restriction premise. The sharp total-capacity bound for five or more centres, general extremal reduction, and the full classification remain unproved.
+This update proves convex independence of actual finite configurations and centre models when 0 < t < 3 under the stated angle cap. It also verifies conditional exterior-budget arithmetic and a local exterior-gap identity for charts with a common ray sign. Constructing the required rotated charts, rotation invariance, and the polygon exterior-angle sum remain unproved here. Neither the general sharp capacity bound nor the full JSP-000404 classification is claimed.
 
-Earlier snapshots are preserved: [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -64,6 +64,20 @@ Earlier snapshots are preserved: [finite clusters, 2026-09-21](jsp404-finite-clu
   centres, `n >= 2`, and `n <= t < n + 1`, every local exponent is at most `n-1`.
   At most one reaches `n-1` in the lower half-band, and at most two throughout
   the band. These constraints do not bound the total of all smaller weights.
+- When `0 < t < 3`, the actual angle cap implies convex independence of
+  every finite plane point set and of the finite model's centre family.
+  Caratheodory's theorem reduces convex-hull membership to at most three
+  supporting points; the angle cap excludes both segment and triangle
+  interior cases. Convex position is derived, not added as an assumption.
+  Polygon cardinality and sharp total-capacity bounds are still unproved.
+- Conditional exterior-budget arithmetic: if scaled quantities lie in
+  `[1,3)` and sum to `2*t`, their gap-capacity weights sum to at most `2*t`,
+  hence at most four for `t < 5/2` and five for `t < 3`. Their identification
+  with actual polygon exterior angles and local indices remains unproved.
+- A local geometric interface identifies the index with the exterior-gap
+  capacity when a sorted direction chart has a common ray sign and its endpoint
+  angle obeys the cap. Constructing these charts by rotation from convex
+  position, rotation invariance, and the polygon exterior-angle sum remain open.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -93,6 +107,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Independence from chart choices | `FiniteDirectionInvariance.lean`: `SortedDirectionChart.theta_unique`, `.gap_unique`, `.gapIndex_unique` |
 | Actual cyclic gap restriction | `FiniteGapRestriction.lean`: `SortedDirectionChart.gap_sum_Ico`, `.gap_sum_compl_Ico`, `.gapIndex_le_anchor_angle` |
 | Exponent bounds for actual finite centres | `FiniteMaximalCentres.lean`: `FiniteClusterModel.gapIndex_le_triangle`, `.gapIndex_le_pred`, `.triple_capacity_low`, `.triple_capacity_high`, `.maximal_exponents_low`, `.maximal_exponents_high` |
+| Convex position below the 120-degree cap | `SmallAngleConvexPosition.lean`: `notMem_triangle_of_angle_bound`, `notMem_convexHull_erase_of_angle_bound`, `convexIndependent_of_angle_bound`, `FiniteClusterModel.centres_convexIndependent` |
+| Conditional exterior-budget arithmetic | `ExteriorBudget.lean`: `gapBits_weight_le_of_one_le_lt_three`, `exterior_budget_weight_sum`, `exterior_budget_low`, `exterior_budget_high` |
+| Conditional local exterior-gap identity | `SemicircleGapCapacity.lean`: `SortedDirectionChart.gapIndex_eq_exterior_of_same_ray` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
