@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-21. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-22. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-21 finite-cluster snapshot](jsp404-finite-clusters-20260921.zip) · [SHA-256](jsp404-finite-clusters-20260921.zip.sha256).
+[Download the 2026-09-22 gap-restriction snapshot](jsp404-gap-restriction-20260922.zip) · [SHA-256](jsp404-gap-restriction-20260922.zip.sha256).
 
-Archive SHA-256: `de958e3cb79ed86376330bc6e8cfd4693ee13246d123ec95811c6484c9bcbd48`.
+Archive SHA-256: `ef51d31c5bab1a0292b2de62dff8499339e2032b7071fdf712c651a5d3cdfc3d`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update generalizes the local counting connection to every finite occupied-centre count at least two. Actual sorted projective charts exist; cyclic gaps are positive, sum to pi, and are independent of chart choices. Angular restrictions give allowed coordinates and bound each cluster by its local capacity. Total cardinality is bounded by the sum of those capacities. The sharp bound on that sum for five or more centres, general extremal reduction, and the full classification remain unproved.
+This update derives triangle restriction from actual cyclic gaps for arbitrary finite occupied-centre models. It proves individual local exponent bounds and the limits on how many exponents can reach n-1 in the two parameter bands. These results remove an earlier explicit triangle-restriction premise. The sharp total-capacity bound for five or more centres, general extremal reduction, and the full classification remain unproved.
 
-Earlier snapshots are preserved: [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -58,6 +58,12 @@ Earlier snapshots are preserved: [four clusters, 2026-09-21](jsp404-four-cluster
   the sum of those capacities. The sorted angles, cyclic gaps, and local indices
   are independent of the chosen valid chart. The sharp bound on this sum for five or more
   centres remains unproved.
+- For these actual finite models, retaining two outgoing directions merges
+  the cyclic gaps into the two triangle gaps without decreasing local capacity.
+  Thus triangle restriction is proved rather than assumed. For at least three
+  centres, `n >= 2`, and `n <= t < n + 1`, every local exponent is at most `n-1`.
+  At most one reaches `n-1` in the lower half-band, and at most two throughout
+  the band. These constraints do not bound the total of all smaller weights.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -85,6 +91,8 @@ Main declarations (namespace `Prize.JSP404`):
 | Arbitrarily many actual directions | `FiniteDirectionChart.lean`: `exists_sortedDirectionChart`, `SortedDirectionChart.gap_sum`, `.exists_allowed_coordinates` |
 | Arbitrary finite clusters, local bound | `FiniteClusterCounting.lean`: `FiniteClusterModel.cluster_card_le_gapIndex`, `.exists_capacity_bound` |
 | Independence from chart choices | `FiniteDirectionInvariance.lean`: `SortedDirectionChart.theta_unique`, `.gap_unique`, `.gapIndex_unique` |
+| Actual cyclic gap restriction | `FiniteGapRestriction.lean`: `SortedDirectionChart.gap_sum_Ico`, `.gap_sum_compl_Ico`, `.gapIndex_le_anchor_angle` |
+| Exponent bounds for actual finite centres | `FiniteMaximalCentres.lean`: `FiniteClusterModel.gapIndex_le_triangle`, `.gapIndex_le_pred`, `.triple_capacity_low`, `.triple_capacity_high`, `.maximal_exponents_low`, `.maximal_exponents_high` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -102,10 +110,12 @@ it is not a claim of mathematical novelty or first formalization.
    provided, but their sum has not been bounded by the claimed sharp bands.
 3. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
 
-Some existing auxiliary theorems have explicit hypotheses that are not yet
-established for the general construction; in particular see
-`research/jsp404-maximal-centres.md`. No such hypothesis has been added to
-`SendovClaim`. Computational experiments are discovery aids, not proofs.
+The earlier triangle-restriction hypothesis in
+`research/jsp404-maximal-centres.md` is now derived for actual finite centre
+models; see `research/jsp404-gap-restriction.md`. The ordinary-configuration
+reduction and sharp global weight bound remain open in this development.
+No hypothesis has been added to `SendovClaim`.
+Computational experiments are discovery aids, not proofs.
 
 ## Reproduction and verification
 
@@ -176,11 +186,11 @@ award eligibility, or exclusive right to the problem is asserted.
 
 ## Publication status
 
-This file prepares the next standalone research snapshot. An earlier version
-is public in [the project owner's repository](https://github.com/jerrylijize1224-star/jsp404-lean-partial),
-at commit `317441dd29d7a4975be4a89dc7802be2567f86cb`.
-The publication record for this revision must be checked separately from that
-earlier commit. The prize repository's
+This file prepares the next standalone research snapshot. Earlier versions
+are public in [the project owner's repository](https://github.com/jerrylijize1224-star/jsp404-lean-partial);
+their fixed commits and archive checksums are recorded in
+`research/jsp404-publication.md`. The publication record for this revision
+must be checked separately from those earlier commits. The prize repository's
 [current contribution rules](https://github.com/TheJustinSunPrize/awards/blob/main/CONTRIBUTING.md)
 accept complete original-problem solutions, not intermediate formalizations.
 This snapshot is therefore intended for the project owner's own repository,
