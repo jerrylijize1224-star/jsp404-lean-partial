@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-22 convex-position snapshot](jsp404-convex-position-20260922.zip) · [SHA-256](jsp404-convex-position-20260922.zip.sha256).
+[Download the 2026-09-22 exterior-bound and five-centre snapshot](jsp404-exterior-five-20260922.zip) · [SHA-256](jsp404-exterior-five-20260922.zip.sha256).
 
-Archive SHA-256: `bccd4cb51edabe89baecf5773f8e6a93d4c295c3ad06275aae2c5d29f8ac299f`.
+Archive SHA-256: `fa3a859de3ea3f22c298fbc1ddaa91cb123183c9841b1b89cc3d816e44b32db7`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves convex independence of actual finite configurations and centre models when 0 < t < 3 under the stated angle cap. It also verifies conditional exterior-budget arithmetic and a local exterior-gap identity for charts with a common ray sign. Constructing the required rotated charts, rotation invariance, and the polygon exterior-angle sum remain unproved here. Neither the general sharp capacity bound nor the full JSP-000404 classification is claimed.
+This update derives local exterior-capacity upper bounds without rotating charts or imposing common ray signs. An explicit exterior-angle budget then bounds actual finite-cluster counts by 2*t. For five labelled centres, three specified strict diagonal crossings imply the required angle sum and a five-label bound in the first parameter band. Existence of that labelling for arbitrary convex-independent five-point sets, the general sharp capacity bound, and the full JSP-000404 classification remain unproved.
 
-Earlier snapshots are preserved: [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -78,6 +78,19 @@ Earlier snapshots are preserved: [gap restriction, 2026-09-22](jsp404-gap-restri
   capacity when a sorted direction chart has a common ray sign and its endpoint
   angle obeys the cap. Constructing these charts by rotation from convex
   position, rotation invariance, and the polygon exterior-angle sum remain open.
+- A subsequent route avoids rotation entirely: actual triangle restriction
+  gives a local exterior-capacity upper bound for `t < 3`. For finite models,
+  an explicit normalized exterior-angle sum at most two then bounds the sum
+  of local weights, and actual label count, by `2*t`. Thus counts at most four
+  or five follow in the first two bands, conditional on that angle budget.
+  Constructing suitable neighbours and proving the budget from convex position
+  remains unproved; these are not unconditional finite-model bounds.
+- For five labelled centres with three specified strict diagonal crossings,
+  the actual angle decompositions prove an interior-angle sum of `3*pi` and
+  an exterior-angle sum of `2*pi`. A five-cluster model with this incidence
+  certificate has exactly five labels under the cap for `1 <= t < 3`, and
+  cannot satisfy the cap for `1 <= t < 5/2`. Existence of a suitable labelling
+  for every convex-independent five-point set remains unproved here.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -110,6 +123,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Convex position below the 120-degree cap | `SmallAngleConvexPosition.lean`: `notMem_triangle_of_angle_bound`, `notMem_convexHull_erase_of_angle_bound`, `convexIndependent_of_angle_bound`, `FiniteClusterModel.centres_convexIndependent` |
 | Conditional exterior-budget arithmetic | `ExteriorBudget.lean`: `gapBits_weight_le_of_one_le_lt_three`, `exterior_budget_weight_sum`, `exterior_budget_low`, `exterior_budget_high` |
 | Conditional local exterior-gap identity | `SemicircleGapCapacity.lean`: `SortedDirectionChart.gapIndex_eq_exterior_of_same_ray` |
+| Local exterior upper bound without rotation | `FiniteExteriorBound.lean`: `SortedDirectionChart.gapIndex_le_exterior`, `FiniteClusterModel.gapIndex_le_exterior` |
+| Actual total count with an explicit exterior budget | `FiniteExteriorBound.lean`: `FiniteClusterModel.capacity_le_twice_parameter_of_exterior_budget`, `.card_le_twice_parameter_of_exterior_budget`, `.card_le_four_of_exterior_budget`, `.card_le_five_of_exterior_budget` |
+| Five-centre budget from actual crossings | `PentagonExterior.lean`: `PentagonFan.angle_sum`, `.exterior_sum`, `FiniteClusterModel.card_eq_five_of_pentagon_fan`, `.not_angleBound_of_pentagon_fan_low` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
