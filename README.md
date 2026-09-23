@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-22. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-23. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-22 exterior-bound and five-centre snapshot](jsp404-exterior-five-20260922.zip) · [SHA-256](jsp404-exterior-five-20260922.zip.sha256).
+[Download the 2026-09-23 pentagon-order snapshot](jsp404-pentagon-order-20260923.zip) · [SHA-256](jsp404-pentagon-order-20260923.zip.sha256).
 
-Archive SHA-256: `fa3a859de3ea3f22c298fbc1ddaa91cb123183c9841b1b89cc3d816e44b32db7`.
+Archive SHA-256: `2e6f2a5841715daac126fda2444ce441f637c52aac9e0398c616cae700e02243`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update derives local exterior-capacity upper bounds without rotating charts or imposing common ray signs. An explicit exterior-angle budget then bounds actual finite-cluster counts by 2*t. For five labelled centres, three specified strict diagonal crossings imply the required angle sum and a five-label bound in the first parameter band. Existence of that labelling for arbitrary convex-independent five-point sets, the general sharp capacity bound, and the full JSP-000404 classification remain unproved.
+This update constructs the required crossing order for every convex-independent five-point set, using strict separation, slope sorting and Radon's theorem. Consequently every five-centre cluster model under the stated angle cap with 1 <= t < 3 has exactly five labels, without an additional crossing or exterior-budget assumption. Such models are impossible for 1 <= t < 5/2. Higher parameters, six or more centres, and the full JSP-000404 classification remain unproved.
 
-Earlier snapshots are preserved: [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -83,14 +83,20 @@ Earlier snapshots are preserved: [convex position, 2026-09-22](jsp404-convex-pos
   an explicit normalized exterior-angle sum at most two then bounds the sum
   of local weights, and actual label count, by `2*t`. Thus counts at most four
   or five follow in the first two bands, conditional on that angle budget.
-  Constructing suitable neighbours and proving the budget from convex position
-  remains unproved; these are not unconditional finite-model bounds.
+  Constructing suitable neighbours and proving the budget for arbitrary centre
+  counts remains unproved; these are not unconditional arbitrary-size bounds.
 - For five labelled centres with three specified strict diagonal crossings,
   the actual angle decompositions prove an interior-angle sum of `3*pi` and
   an exterior-angle sum of `2*pi`. A five-cluster model with this incidence
   certificate has exactly five labels under the cap for `1 <= t < 3`, and
-  cannot satisfy the cap for `1 <= t < 5/2`. Existence of a suitable labelling
-  for every convex-independent five-point set remains unproved here.
+  cannot satisfy the cap for `1 <= t < 5/2`.
+- A suitable crossing labelling now exists for every convex-independent
+  five-point set: strict separation supplies positive affine ray coordinates,
+  slope sorting and Radon classification force the required crossings.
+  Relabelling the finite model therefore removes the crossing assumptions.
+  Every five-centre model under the cap with `1 <= t < 3` has exactly five
+  labels, and no such model satisfies the cap with `1 <= t < 5/2`.
+  The higher-parameter five-centre cases and all larger centre counts remain open.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -126,6 +132,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Local exterior upper bound without rotation | `FiniteExteriorBound.lean`: `SortedDirectionChart.gapIndex_le_exterior`, `FiniteClusterModel.gapIndex_le_exterior` |
 | Actual total count with an explicit exterior budget | `FiniteExteriorBound.lean`: `FiniteClusterModel.capacity_le_twice_parameter_of_exterior_budget`, `.card_le_twice_parameter_of_exterior_budget`, `.card_le_four_of_exterior_budget`, `.card_le_five_of_exterior_budget` |
 | Five-centre budget from actual crossings | `PentagonExterior.lean`: `PentagonFan.angle_sum`, `.exterior_sum`, `FiniteClusterModel.card_eq_five_of_pentagon_fan`, `.not_angleBound_of_pentagon_fan_low` |
+| Supporting ray coordinates | `ConvexRayCoordinates.lean`: `exists_positive_support`, `exists_complementary_coordinate`, `slope_injective_of_positive_support` |
+| Ordered rays force strict crossings | `ConvexFourCrossings.lean`, `OrderedRayCrossing.lean`: `convex_four_weak_crossing_cases`, `ordered_rays_crossing` |
+| Five-point labelling existence and five-cluster count | `PentagonOrder.lean`: `exists_pentagonFan_reindex`, `FiniteClusterModel.card_eq_five_of_lt_three`, `.not_angleBound_of_five_centres_low` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -140,7 +149,9 @@ it is not a claim of mathematical novelty or first formalization.
    clusters is made.
 2. A sharp total-capacity inequality for five or more centres. The arbitrary-size
    projective-gap model and the local cluster-to-capacity counting are now
-   provided, but their sum has not been bounded by the claimed sharp bands.
+   provided, but their sum has not been bounded by the claimed sharp bands in
+   general. The five-centre actual count for `t < 3` is now established;
+   higher parameters and six or more centres remain unproved.
 3. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
 
 The earlier triangle-restriction hypothesis in
