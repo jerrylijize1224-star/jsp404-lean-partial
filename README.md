@@ -11,20 +11,20 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-25 ordinary lower-bound snapshot](jsp404-first-band-lower-20260925.zip) · [SHA-256](jsp404-first-band-lower-20260925.zip.sha256).
+[Download the 2026-09-25 exact six-point snapshot](jsp404-six-points-20260925.zip) · [SHA-256](jsp404-six-points-20260925.zip.sha256).
 
-Archive SHA-256: `6f98e312b0cfd56526a48e8e3cfedf692871e6ec5cd71f5578b170b424b56d6f`.
+Archive SHA-256: `eb2583376f630c929e20bf4152ab02752dd83b91a461df2795d8f47c8e4b3815`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves the original ordinary-configuration lower bounds: every set of at least five points has an angle at least 108 degrees, and every set of at least six points has an angle at least 120 degrees. General convex fan ordering and the hexagon angle sum also rule out six or more occupied centres when 0 < t < 3. No general-position, ordering or cluster-reduction assumption is imposed on the ordinary point sets. Matching sharpness constructions and the full JSP-000404 classification remain unproved. Full build and axiom checks passed.
+This update proves alpha(6) = 120 degrees for the original problem. An explicit regular hexagon has six distinct points and every angle at most 120 degrees; a polynomial inner-product certificate verifies its triples using exact real arithmetic. The previously proved universal lower bound supplies the other direction. Full build and axiom checks passed. Matching constructions for five, seven and eight points, the higher-parameter general bounds, and the full JSP-000404 classification remain unproved in this development. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
 - Actual Euclidean-plane definitions, monotonicity, general-position reduction,
   sharpness interfaces, and the exact values `alpha 3 = pi / 3` and
-  `alpha 4 = pi / 2`.
+  `alpha 4 = pi / 2` and `alpha 6 = (2/3)*pi`.
 - Binary-cover counting and conditional geometric direction-cover bounds.
 - Two-centre capacity, three-centre capacity bounds in both parameter ranges,
   and their connection to actual triangle angles.
@@ -109,7 +109,13 @@ Earlier snapshots are preserved: [pentagon ordering, 2026-09-23](jsp404-pentagon
   points has an angle at least 2*pi/3 (120 degrees). The statements feed directly
   into GuaranteedAngle and alpha, without a cluster-reduction assumption.
   They prove the lower-bound direction for n=5 and n=6,7,8 in the target formula;
-  matching sharpness constructions are not part of this update.
+  the six-point sharpness construction is now provided below. The five-,
+  seven- and eight-point matching constructions remain unproved here.
+- An explicit regular hexagon with coordinates involving sqrt(3) has six
+  distinct points and every angle at most 120 degrees. A polynomial
+  inner-product certificate verifies all triples using exact real arithmetic.
+  Together with the ordinary lower bound, this proves sixPoints_sharp and
+  alpha_six for the original problem. No finite-cluster premise is used.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -151,6 +157,7 @@ Main declarations (namespace `Prize.JSP404`):
 | General convex fan ordering | `ConvexFanOrder.lean`: `exists_convexFanCrossings_reindex` |
 | Six-point obstruction and centre count | `SixPointObstruction.lean`: `ConvexFanCrossings.hexagon_angle_sum`, `card_le_five_of_angle_bound`, `FiniteClusterModel.centres_card_le_five_of_lt_three` |
 | Ordinary 108/120-degree universal bounds | `FirstBandLowerBounds.lean`: `hasLargeAngle_three_pi_div_five`, `hasLargeAngle_two_pi_div_three`, `three_pi_div_five_le_alpha`, `two_pi_div_three_le_alpha` |
+| Exact six-point value | `SixPoints.lean`: `angle_le_two_pi_div_three_of_inner`, `hexagonSet_card`, `hexagonSet_angle`, `sixPoints_sharp`, `alpha_six` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -169,7 +176,7 @@ it is not a claim of mathematical novelty or first formalization.
    general. The five-centre actual count for `t < 3` is now established;
    six or more centres are now excluded for t < 3. The higher-parameter
    sharp total-capacity bounds remain unproved.
-3. Matching sharpness constructions for the new ordinary n=5 and n=6,7,8
+3. Matching sharpness constructions for the ordinary n=5,7,8
    lower bounds, full sharpness constructions, and assembly of the
    arbitrary-cardinality theorem.
 
