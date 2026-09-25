@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-23. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-25. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-23 pentagon-order snapshot](jsp404-pentagon-order-20260923.zip) · [SHA-256](jsp404-pentagon-order-20260923.zip.sha256).
+[Download the 2026-09-25 ordinary lower-bound snapshot](jsp404-first-band-lower-20260925.zip) · [SHA-256](jsp404-first-band-lower-20260925.zip.sha256).
 
-Archive SHA-256: `2e6f2a5841715daac126fda2444ce441f637c52aac9e0398c616cae700e02243`.
+Archive SHA-256: `6f98e312b0cfd56526a48e8e3cfedf692871e6ec5cd71f5578b170b424b56d6f`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update constructs the required crossing order for every convex-independent five-point set, using strict separation, slope sorting and Radon's theorem. Consequently every five-centre cluster model under the stated angle cap with 1 <= t < 3 has exactly five labels, without an additional crossing or exterior-budget assumption. Such models are impossible for 1 <= t < 5/2. Higher parameters, six or more centres, and the full JSP-000404 classification remain unproved.
+This update proves the original ordinary-configuration lower bounds: every set of at least five points has an angle at least 108 degrees, and every set of at least six points has an angle at least 120 degrees. General convex fan ordering and the hexagon angle sum also rule out six or more occupied centres when 0 < t < 3. No general-position, ordering or cluster-reduction assumption is imposed on the ordinary point sets. Matching sharpness constructions and the full JSP-000404 classification remain unproved. Full build and axiom checks passed.
 
-Earlier snapshots are preserved: [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -69,7 +69,8 @@ Earlier snapshots are preserved: [exterior bounds and five centres, 2026-09-22](
   Caratheodory's theorem reduces convex-hull membership to at most three
   supporting points; the angle cap excludes both segment and triangle
   interior cases. Convex position is derived, not added as an assumption.
-  Polygon cardinality and sharp total-capacity bounds are still unproved.
+  The new six-point argument bounds the number of centres by five for t < 3;
+  the general sharp total-capacity bound at higher parameters remains unproved.
 - Conditional exterior-budget arithmetic: if scaled quantities lie in
   `[1,3)` and sum to `2*t`, their gap-capacity weights sum to at most `2*t`,
   hence at most four for `t < 5/2` and five for `t < 3`. Their identification
@@ -96,7 +97,19 @@ Earlier snapshots are preserved: [exterior bounds and five centres, 2026-09-22](
   Relabelling the finite model therefore removes the crossing assumptions.
   Every five-centre model under the cap with `1 <= t < 3` has exactly five
   labels, and no such model satisfies the cap with `1 <= t < 5/2`.
-  The higher-parameter five-centre cases and all larger centre counts remain open.
+  The higher-parameter cases remain open. The new six-point argument excludes
+  six or more centres for 0 < t < 3.
+- Every finite convex-independent family has a reindexing with strict crossings
+  for all ordered triples of rays from a base vertex. In the six-point case,
+  this gives a hexagon angle sum of 4*pi. Therefore any ordinary finite point
+  set under the cap for 0 < t < 3 has at most five points, and any finite cluster
+  model in that band has at most five occupied centres.
+- For the original ordinary configurations, every set of at least five points
+  has an angle at least 3*pi/5 (108 degrees), and every set of at least six
+  points has an angle at least 2*pi/3 (120 degrees). The statements feed directly
+  into GuaranteedAngle and alpha, without a cluster-reduction assumption.
+  They prove the lower-bound direction for n=5 and n=6,7,8 in the target formula;
+  matching sharpness constructions are not part of this update.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -135,6 +148,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Supporting ray coordinates | `ConvexRayCoordinates.lean`: `exists_positive_support`, `exists_complementary_coordinate`, `slope_injective_of_positive_support` |
 | Ordered rays force strict crossings | `ConvexFourCrossings.lean`, `OrderedRayCrossing.lean`: `convex_four_weak_crossing_cases`, `ordered_rays_crossing` |
 | Five-point labelling existence and five-cluster count | `PentagonOrder.lean`: `exists_pentagonFan_reindex`, `FiniteClusterModel.card_eq_five_of_lt_three`, `.not_angleBound_of_five_centres_low` |
+| General convex fan ordering | `ConvexFanOrder.lean`: `exists_convexFanCrossings_reindex` |
+| Six-point obstruction and centre count | `SixPointObstruction.lean`: `ConvexFanCrossings.hexagon_angle_sum`, `card_le_five_of_angle_bound`, `FiniteClusterModel.centres_card_le_five_of_lt_three` |
+| Ordinary 108/120-degree universal bounds | `FirstBandLowerBounds.lean`: `hasLargeAngle_three_pi_div_five`, `hasLargeAngle_two_pi_div_three`, `three_pi_div_five_le_alpha`, `two_pi_div_three_le_alpha` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -151,8 +167,11 @@ it is not a claim of mathematical novelty or first formalization.
    projective-gap model and the local cluster-to-capacity counting are now
    provided, but their sum has not been bounded by the claimed sharp bands in
    general. The five-centre actual count for `t < 3` is now established;
-   higher parameters and six or more centres remain unproved.
-3. Full sharpness constructions and assembly of the arbitrary-cardinality theorem.
+   six or more centres are now excluded for t < 3. The higher-parameter
+   sharp total-capacity bounds remain unproved.
+3. Matching sharpness constructions for the new ordinary n=5 and n=6,7,8
+   lower bounds, full sharpness constructions, and assembly of the
+   arbitrary-cardinality theorem.
 
 The earlier triangle-restriction hypothesis in
 `research/jsp404-maximal-centres.md` is now derived for actual finite centre
