@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-26 seven- and eight-point snapshot](jsp404-binary-eight-20260926.zip) · [SHA-256](jsp404-binary-eight-20260926.zip.sha256).
+[Download the 2026-09-26 general binary-scale snapshot](jsp404-binary-scales-20260926.zip) · [SHA-256](jsp404-binary-scales-20260926.zip.sha256).
 
-Archive SHA-256: `621e82741a96f1328d8f08cc300519aeb2904acab072650dfdf5bdc250cf750e`.
+Archive SHA-256: `26126edce45a0476d26eddd0690d829eef0ef284fbecd1bebfb4e3f2f13dae41`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves alpha(7) = alpha(8) = 120 degrees for the original problem. An explicit eight-point binary construction at scales 1,t,t^2 gives arbitrarily close upper bounds. A finite simultaneous approximation theorem guarantees distinct points and all angle bounds for one positive parameter. Combined with the existing universal lower bound, this proves the exact values without assuming an attaining configuration. Full build and all 217 axiom checks passed. Exact values for n = 3 through 8 are now verified here; the arbitrary-cardinality theorem remains unproved. No novelty or award claim is made.
+This update generalizes the ordinary-point binary construction to any finite number of levels. Given nonzero axes with an explicit bound A on all signed angles between distinct axes, it produces exactly 2^n distinct points with all triple angles below A plus any positive error. Four explicit axes discharge those hypotheses at 135 degrees and give a sixteen-point upper bound. The verified interval is 120 <= alpha(16) <= 135 degrees; the exact sixteen-point value is not proved here. Full build and all 236 axiom checks passed. The exact cases n=3 through 8 remain verified; sharp axis families for arbitrary n, the general lower bound and the full classification remain incomplete. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -129,6 +129,16 @@ Earlier snapshots are preserved: [exact five-point value, 2026-09-26](jsp404-fiv
   directions 0,60,120 degrees. This proves sevenPoints_sharp, eightPoints_sharp,
   alpha_seven and alpha_eight. Approximate counterexamples suffice; no exact
   attaining seven- or eight-point configuration is claimed.
+- For any finite number n of binary levels, first-difference factorization
+  provides polynomial normalized differences with nonzero limits. Given
+  nonzero axes with all distinct-axis signed angles at most A, A >= 0,
+  this constructs exactly 2^n ordinary points with every angle below A+epsilon
+  for every positive epsilon. The axis hypotheses are explicit, not assumed
+  to hold automatically for sharp A at every n.
+- Four explicit axes at 0,45,90,135 degrees discharge those conditions for
+  A=3*pi/4. This gives sixteen-point approximations and alpha m <= 3*pi/4
+  for 3 <= m <= 16. Together with the known lower bound, the proved interval
+  for alpha 16 is [2*pi/3,3*pi/4]; equality at 3*pi/4 is not established here.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -175,6 +185,8 @@ Main declarations (namespace `Prize.JSP404`):
 | Finite simultaneous realization | `FiniteAngleApproximation.lean`: `exists_finite_angle_approximation` |
 | Binary eight-point approximations | `BinaryEightConstruction.lean`: `binaryEight_difference`, `binaryEightNormal_nonzero`, `binaryEightNormal_angle`, `exists_eightPoint_counterexample` |
 | Exact seven- and eight-point values | `BinaryEightConstruction.lean`: `first_high_band_sharp`, `sevenPoints_sharp`, `eightPoints_sharp`, `alpha_seven`, `alpha_eight` |
+| Arbitrary finite binary scales | `BinaryScaleConstruction.lean`: `binaryScale_difference`, `binaryScaleNormal_signed`, `exists_binaryScale_counterexample`, `binaryScale_alpha_le` |
+| Sixteen-point upper bound | `SixteenPointUpperBound.lean`: `fourBinaryAxes_angle`, `exists_sixteenPoint_counterexample`, `alpha_le_three_pi_div_four`, `alpha_sixteen_bounds` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -193,9 +205,11 @@ it is not a claim of mathematical novelty or first formalization.
    general. The five-centre actual count for `t < 3` is now established;
    six or more centres are now excluded for t < 3. The higher-parameter
    sharp total-capacity bounds remain unproved.
-3. General sharpness constructions beyond the concrete eight-point family
-   and assembly of the arbitrary-cardinality theorem. The exact ordinary
-   cases n=3 through n=8 are proved; higher cases remain incomplete.
+3. Sharp axis families for arbitrary numbers of binary levels, the remaining
+   sharpness constructions in both bands, and assembly of the arbitrary-cardinality
+   theorem. The finite binary realization mechanism is now proved under explicit
+   axis hypotheses, discharged here for a sixteen-point 135-degree upper bound.
+   Exact ordinary cases n=3 through n=8 are proved; higher exact cases remain incomplete.
 
 The earlier triangle-restriction hypothesis in
 `research/jsp404-maximal-centres.md` is now derived for actual finite centre
