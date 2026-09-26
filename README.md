@@ -11,20 +11,21 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-26 exact five-point snapshot](jsp404-five-points-20260926.zip) · [SHA-256](jsp404-five-points-20260926.zip.sha256).
+[Download the 2026-09-26 seven- and eight-point snapshot](jsp404-binary-eight-20260926.zip) · [SHA-256](jsp404-binary-eight-20260926.zip.sha256).
 
-Archive SHA-256: `4693671fdda938509d46e9dc7d395d72687ea67b49ce2ac9cfa250f7f0ee8c65`.
+Archive SHA-256: `621e82741a96f1328d8f08cc300519aeb2904acab072650dfdf5bdc250cf750e`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves alpha(5) = 108 degrees for the original problem. Five explicit points built from the golden ratio are distinct and have every angle at most 108 degrees. Exact polynomial inner-product certificates and mathlib's cos(pi/5) formula establish the upper bound; the previously proved ordinary universal lower bound supplies the other direction. Full build and axiom checks passed. This development now proves the exact values for n = 3,4,5,6; matching constructions for seven and eight points and the arbitrary-cardinality theorem remain unproved. No novelty or award claim is made.
+This update proves alpha(7) = alpha(8) = 120 degrees for the original problem. An explicit eight-point binary construction at scales 1,t,t^2 gives arbitrarily close upper bounds. A finite simultaneous approximation theorem guarantees distinct points and all angle bounds for one positive parameter. Combined with the existing universal lower bound, this proves the exact values without assuming an attaining configuration. Full build and all 217 axiom checks passed. Exact values for n = 3 through 8 are now verified here; the arbitrary-cardinality theorem remains unproved. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
 - Actual Euclidean-plane definitions, monotonicity, general-position reduction,
   sharpness interfaces, and the exact values `alpha 3 = pi / 3` and
-  `alpha 4 = pi / 2`, `alpha 5 = (3/5)*pi` and `alpha 6 = (2/3)*pi`.
+  `alpha 4 = pi / 2`, `alpha 5 = (3/5)*pi`, and
+  `alpha 6 = alpha 7 = alpha 8 = (2/3)*pi`.
 - Binary-cover counting and conditional geometric direction-cover bounds.
 - Two-centre capacity, three-centre capacity bounds in both parameter ranges,
   and their connection to actual triangle angles.
@@ -109,8 +110,8 @@ Earlier snapshots are preserved: [exact six-point value, 2026-09-25](jsp404-six-
   points has an angle at least 2*pi/3 (120 degrees). The statements feed directly
   into GuaranteedAngle and alpha, without a cluster-reduction assumption.
   They prove the lower-bound direction for n=5 and n=6,7,8 in the target formula;
-  five- and six-point sharpness constructions are now provided below. The
-  seven- and eight-point matching constructions remain unproved here.
+  matching sharpness constructions for all four cases are now provided below,
+  using approximation for seven and eight points.
 - An explicit regular hexagon with coordinates involving sqrt(3) has six
   distinct points and every angle at most 120 degrees. A polynomial
   inner-product certificate verifies all triples using exact real arithmetic.
@@ -121,6 +122,13 @@ Earlier snapshots are preserved: [exact six-point value, 2026-09-25](jsp404-six-
   certificates follow from exact polynomial identities; the trigonometric
   value uses mathlib's cos(pi/5) formula. This proves fivePoints_sharp and
   alpha_five, completing both directions for the original five-point problem.
+- A finite simultaneous approximation theorem converts explicit positively
+  scaled point differences and nonzero continuous limiting directions into
+  distinct ordinary points with angles below A+epsilon. Its hypotheses are
+  discharged for eight points with binary offsets at scales 1,t,t^2 along
+  directions 0,60,120 degrees. This proves sevenPoints_sharp, eightPoints_sharp,
+  alpha_seven and alpha_eight. Approximate counterexamples suffice; no exact
+  attaining seven- or eight-point configuration is claimed.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -164,6 +172,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Ordinary 108/120-degree universal bounds | `FirstBandLowerBounds.lean`: `hasLargeAngle_three_pi_div_five`, `hasLargeAngle_two_pi_div_three`, `three_pi_div_five_le_alpha`, `two_pi_div_three_le_alpha` |
 | Exact six-point value | `SixPoints.lean`: `angle_le_two_pi_div_three_of_inner`, `hexagonSet_card`, `hexagonSet_angle`, `sixPoints_sharp`, `alpha_six` |
 | Exact five-point value | `FivePoints.lean`: `angle_le_of_inner_certificate`, `goldenPentagon_inner_certificate`, `pentagonSet_card`, `pentagonSet_angle`, `fivePoints_sharp`, `alpha_five` |
+| Finite simultaneous realization | `FiniteAngleApproximation.lean`: `exists_finite_angle_approximation` |
+| Binary eight-point approximations | `BinaryEightConstruction.lean`: `binaryEight_difference`, `binaryEightNormal_nonzero`, `binaryEightNormal_angle`, `exists_eightPoint_counterexample` |
+| Exact seven- and eight-point values | `BinaryEightConstruction.lean`: `first_high_band_sharp`, `sevenPoints_sharp`, `eightPoints_sharp`, `alpha_seven`, `alpha_eight` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -182,9 +193,9 @@ it is not a claim of mathematical novelty or first formalization.
    general. The five-centre actual count for `t < 3` is now established;
    six or more centres are now excluded for t < 3. The higher-parameter
    sharp total-capacity bounds remain unproved.
-3. Matching sharpness constructions for the ordinary n=7,8
-   lower bounds, full sharpness constructions, and assembly of the
-   arbitrary-cardinality theorem.
+3. General sharpness constructions beyond the concrete eight-point family
+   and assembly of the arbitrary-cardinality theorem. The exact ordinary
+   cases n=3 through n=8 are proved; higher cases remain incomplete.
 
 The earlier triangle-restriction hypothesis in
 `research/jsp404-maximal-centres.md` is now derived for actual finite centre
