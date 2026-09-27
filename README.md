@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-27 first-band upper-bound snapshot](jsp404-first-band-upper-20260927.zip) · [SHA-256](jsp404-first-band-upper-20260927.zip.sha256).
+[Download the 2026-09-27 general lower-bound snapshot](jsp404-uniform-lower-20260927.zip) · [SHA-256](jsp404-uniform-lower-20260927.zip.sha256).
 
-Archive SHA-256: `3470ee261661c35fb4d0a3633646717108e50554e3da8a7de0c41f906c06a87d`.
+Archive SHA-256: `49dcfedc92784a7357599d7cff0016d123b8e46f847eeafd7e1b906e1e694e52`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update completes the first band's general upper-bound construction. Three binary clusters have exactly 2^k+2^(k-2) distinct ordinary points with every triple angle below (1-2/(2*k+1))*pi plus any positive error, for k >= 2. Actual centres, internal axes, mixed angles, simultaneous approximation and label counts are verified. Together with the previous dyadic construction, both bands' general upper bounds are now proved. General lower bounds and the complete SendovClaim remain unproved; the established exact values still cover n=3 through 8. Full build and all 278 axiom checks passed using only standard Lean foundations. No novelty or award claim is made.
+This update proves a general, non-sharp lower bound: for every positive integer k, a configuration with all angles at most pi-pi/k has at most 2^k points. Thus N>2^k implies alpha N >= (1-1/k)*pi, without a cluster or direction-cover assumption. It also proves alpha N tends to pi and combines the lower bound with both previously proved upper bounds. For example, 135 degrees <= alpha 17 <= 140 degrees. Full build and all 290 axiom checks passed using only standard Lean foundations. The matching sharp general lower bounds and full SendovClaim remain unproved; exact values are established for n=3 through 8. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -154,7 +154,18 @@ Earlier snapshots are preserved: [general dyadic upper bound, 2026-09-26](jsp404
   angle obligations; all those hypotheses are discharged for the concrete
   construction. This proves the first band's general upper bound for every
   k >= 2, without an attainment or generalized-configuration realization premise.
-  Both bands' general upper bounds are now proved; general lower bounds are not.
+  Both bands' general upper bounds are now proved; their matching general lower bounds remain open.
+
+- Uniform half-open projective sectors discharge the direction-cover premise
+  for every positive integer k: an ordinary finite configuration, or abstract
+  nonzero antisymmetric directions, with all angles <= pi-pi/k has at most 2^k
+  labels. Hence N>2^k implies alpha N >= (1-1/k)*pi. The proof allows collinear
+  ordinary configurations and has no cluster-reduction assumption.
+- The quantitative estimate 0 <= pi-alpha N <= pi/k for N>2^k, and
+  alpha N tending to pi at infinity. Combined intervals for both bands and the
+  example 3*pi/4 <= alpha 17 <= 7*pi/9 are verified. These lower bounds are
+  not the matching sharp values required by SendovClaim.
+
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -207,11 +218,14 @@ Main declarations (namespace `Prize.JSP404`):
 | Cluster realization from explicit coordinates | `ClusterApproximation.lean`: `clustered_difference`, `clusteredNormal_angle`, `exists_clustered_approximation` |
 | First-band axes and actual centre geometry | `FirstBandAxes.lean`, `FirstBandTriangle.lean`: `firstBandAxis_angle`, `firstBandAxis_centre_angle`, `firstBandCentre_angle` |
 | First-band ordinary construction and general upper bound | `FirstBandConstruction.lean`: `exists_firstBand_approximation`, `firstBandLabel_card`, `exists_firstBand_counterexample`, `sendov_low_band_upper` |
+| Uniform sectors and general lower bound | `UniformSectorLowerBound.lean`: `card_le_two_pow_of_uniform_angle`, `uniform_alpha_lower`, `alpha_within_pi_div`, `alpha_tendsto_pi` |
+| Combined intervals and seventeen points | `GeneralAngleBounds.lean`: `low_band_alpha_bounds`, `high_band_alpha_bounds`, `alpha_seventeen_bounds` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
 published induction. This describes the proof route in this development;
 it is not a claim of mathematical novelty or first formalization.
+
 
 ## Remaining gaps
 
@@ -225,7 +239,7 @@ it is not a claim of mathematical novelty or first formalization.
    general. The five-centre actual count for `t < 3` is now established;
    six or more centres are now excluded for t < 3. The higher-parameter
    sharp total-capacity bounds remain unproved.
-3. General universal lower bounds and assembly of the arbitrary-cardinality
+3. Matching sharp general lower bounds and assembly of the arbitrary-cardinality
    theorem. Concrete ordinary-point constructions now give both bands' general
    upper bounds. The matching general lower bounds are still missing. Exact
    ordinary cases n=3 through n=8 are proved; higher exact cases remain incomplete.
