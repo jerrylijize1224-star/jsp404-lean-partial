@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-27 general lower-bound snapshot](jsp404-uniform-lower-20260927.zip) · [SHA-256](jsp404-uniform-lower-20260927.zip.sha256).
+[Download the 2026-09-27 strict lower-bound snapshot](jsp404-strict-lower-20260927.zip) · [SHA-256](jsp404-strict-lower-20260927.zip.sha256).
 
-Archive SHA-256: `49dcfedc92784a7357599d7cff0016d123b8e46f847eeafd7e1b906e1e694e52`.
+Archive SHA-256: `23c297a247bc1227eeadfed5286513836ae5bb6fc3d749cde4a3a16ef90aeb65`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves a general, non-sharp lower bound: for every positive integer k, a configuration with all angles at most pi-pi/k has at most 2^k points. Thus N>2^k implies alpha N >= (1-1/k)*pi, without a cluster or direction-cover assumption. It also proves alpha N tends to pi and combines the lower bound with both previously proved upper bounds. For example, 135 degrees <= alpha 17 <= 140 degrees. Full build and all 290 axiom checks passed using only standard Lean foundations. The matching sharp general lower bounds and full SendovClaim remain unproved; exact values are established for n=3 through 8. No novelty or award claim is made.
+This update strengthens the general lower bound to alpha N > (1-1/k)*pi for N>2^k. Compactness of normalized antisymmetric direction data gives one positive margin for each k that works at all larger cardinalities. The margin is existential: its numerical size is not determined. No ordinary extremal configuration or realization of arbitrary direction data is assumed. The seventeen-point interval is now 135 degrees < alpha 17 <= 140 degrees. Full build and all 308 axiom checks passed using only standard Lean foundations. Matching sharp general lower bounds and the full SendovClaim remain unproved; exact values still cover n=3 through 8. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -167,6 +167,15 @@ Earlier snapshots are preserved: [first-band general upper bound, 2026-09-27](js
   not the matching sharp values required by SendovClaim.
 
 
+- A compact relaxation of normalized antisymmetric direction assignments,
+  with continuous finite maximum triple angle. The counting obstruction on
+  this larger space gives alpha N > (1-1/k)*pi for N>2^k. For each k, one
+  existential positive margin works for every N>2^k. Its numerical size is
+  not determined. Thus the seventeen-point interval improves to
+  3*pi/4 < alpha 17 <= 7*pi/9, without proving the exact value.
+  No attainment of alpha by ordinary configurations or realizability of
+  arbitrary abstract direction assignments is asserted.
+
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
 `n <= t < n + 1`. Here `n >= 2`; each geometric structure records its precise
@@ -220,6 +229,8 @@ Main declarations (namespace `Prize.JSP404`):
 | First-band ordinary construction and general upper bound | `FirstBandConstruction.lean`: `exists_firstBand_approximation`, `firstBandLabel_card`, `exists_firstBand_counterexample`, `sendov_low_band_upper` |
 | Uniform sectors and general lower bound | `UniformSectorLowerBound.lean`: `card_le_two_pow_of_uniform_angle`, `uniform_alpha_lower`, `alpha_within_pi_div`, `alpha_tendsto_pi` |
 | Combined intervals and seventeen points | `GeneralAngleBounds.lean`: `low_band_alpha_bounds`, `high_band_alpha_bounds`, `alpha_seventeen_bounds` |
+| Compact normalized direction space | `CompactDirectionSpace.lean`: `isCompact_unitDirectionAssignments`, `continuousOn_maximumAssignmentAngle`, `GeneralizedDirections.normalizedAssignment_angle` |
+| Strict general lower bound and common margin | `StrictUniformLowerBound.lean`: `exists_uniform_direction_margin`, `uniform_alpha_strict_lower`, `exists_uniform_alpha_gap`, `alpha_seventeen_strict_bounds` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
