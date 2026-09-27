@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-26. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-27. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-26 general dyadic upper-bound snapshot](jsp404-dyadic-upper-20260926.zip) · [SHA-256](jsp404-dyadic-upper-20260926.zip.sha256).
+[Download the 2026-09-27 first-band upper-bound snapshot](jsp404-first-band-upper-20260927.zip) · [SHA-256](jsp404-first-band-upper-20260927.zip.sha256).
 
-Archive SHA-256: `6cda8f3a3f36d8872d2dcc896cd5a245ba0ef2043a3d8eac6cef74e15b7816d5`.
+Archive SHA-256: `3470ee261661c35fb4d0a3633646717108e50554e3da8a7de0c41f906c06a87d`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves alpha(m) <= (1-1/n)*pi for every n >= 2 and 3 <= m <= 2^n. Equally spaced unit axes satisfy all signed-angle constraints; the existing binary-scale realization then gives exactly 2^n distinct ordinary points below that angle plus any positive error. This completes the general upper-bound direction of the second band in SendovClaim. It does not prove the matching lower bound or the first band's sharper construction. Exact values remain established here only for n=3 through 8. Full build and all 248 axiom checks passed using only standard Lean foundations. The full classification remains unproved; no novelty or award claim is made.
+This update completes the first band's general upper-bound construction. Three binary clusters have exactly 2^k+2^(k-2) distinct ordinary points with every triple angle below (1-2/(2*k+1))*pi plus any positive error, for k >= 2. Actual centres, internal axes, mixed angles, simultaneous approximation and label counts are verified. Together with the previous dyadic construction, both bands' general upper bounds are now proved. General lower bounds and the complete SendovClaim remain unproved; the established exact values still cover n=3 through 8. Full build and all 278 axiom checks passed using only standard Lean foundations. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -144,8 +144,17 @@ Earlier snapshots are preserved: [general binary scales and sixteen-point upper 
   identities give the angle between axes; sign changes give the supplementary
   angle. Thus alpha m <= (1-1/n)*pi for 3 <= m <= 2^n, and every larger angle
   fails to be guaranteed. This proves the general upper-bound direction of
-  the second band in SendovClaim. The matching general lower bound and the
-  first band's sharper construction remain unproved.
+  the second band in SendovClaim. The matching general lower bound remains
+  unproved; the first band construction is supplied below.
+
+- Three explicitly parametrized binary clusters around centres
+  (-cos(delta),0), (cos(delta),0), (0,sin(delta)), delta=pi/(2*k+1), now give
+  exactly 2^k+2^(k-2) ordinary points below (1-2/(2*k+1))*pi plus any positive
+  error. A cluster approximation theorem verifies internal, mixed and centre
+  angle obligations; all those hypotheses are discharged for the concrete
+  construction. This proves the first band's general upper bound for every
+  k >= 2, without an attainment or generalized-configuration realization premise.
+  Both bands' general upper bounds are now proved; general lower bounds are not.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -195,6 +204,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Arbitrary finite binary scales | `BinaryScaleConstruction.lean`: `binaryScale_difference`, `binaryScaleNormal_signed`, `exists_binaryScale_counterexample`, `binaryScale_alpha_le` |
 | Sixteen-point upper bound | `SixteenPointUpperBound.lean`: `fourBinaryAxes_angle`, `exists_sixteenPoint_counterexample`, `alpha_le_three_pi_div_four`, `alpha_sixteen_bounds` |
 | All binary thresholds and second-band upper bound | `EquallySpacedBinaryAxes.lean`: `equallySpacedBinaryAxes_signed_angle`, `exists_dyadic_counterexample`, `dyadic_not_guaranteed`, `dyadic_alpha_upper`, `sendov_high_band_upper` |
+| Cluster realization from explicit coordinates | `ClusterApproximation.lean`: `clustered_difference`, `clusteredNormal_angle`, `exists_clustered_approximation` |
+| First-band axes and actual centre geometry | `FirstBandAxes.lean`, `FirstBandTriangle.lean`: `firstBandAxis_angle`, `firstBandAxis_centre_angle`, `firstBandCentre_angle` |
+| First-band ordinary construction and general upper bound | `FirstBandConstruction.lean`: `exists_firstBand_approximation`, `firstBandLabel_card`, `exists_firstBand_counterexample`, `sendov_low_band_upper` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -213,11 +225,10 @@ it is not a claim of mathematical novelty or first formalization.
    general. The five-centre actual count for `t < 3` is now established;
    six or more centres are now excluded for t < 3. The higher-parameter
    sharp total-capacity bounds remain unproved.
-3. The first band's sharper constructions and assembly of the arbitrary-cardinality
-   theorem. Equally spaced axes now discharge the binary construction for every
-   finite number of levels, completing the second band's general upper bound.
-   The corresponding general lower bound is still missing. Exact ordinary cases
-   n=3 through n=8 are proved; higher exact cases remain incomplete.
+3. General universal lower bounds and assembly of the arbitrary-cardinality
+   theorem. Concrete ordinary-point constructions now give both bands' general
+   upper bounds. The matching general lower bounds are still missing. Exact
+   ordinary cases n=3 through n=8 are proved; higher exact cases remain incomplete.
 
 The earlier triangle-restriction hypothesis in
 `research/jsp404-maximal-centres.md` is now derived for actual finite centre
