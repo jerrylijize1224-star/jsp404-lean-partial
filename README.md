@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-27. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-28. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-27 strict lower-bound snapshot](jsp404-strict-lower-20260927.zip) · [SHA-256](jsp404-strict-lower-20260927.zip.sha256).
+[Download the 2026-09-28 quantitative lower-bound snapshot](jsp404-quantitative-lower-20260928.zip) · [SHA-256](jsp404-quantitative-lower-20260928.zip.sha256).
 
-Archive SHA-256: `23c297a247bc1227eeadfed5286513836ae5bb6fc3d749cde4a3a16ef90aeb65`.
+Archive SHA-256: `1b0bb80c01fa2667de37759726aa8cf4a2a148c3d5f655ea66fbd0d62a31ac43`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update strengthens the general lower bound to alpha N > (1-1/k)*pi for N>2^k. Compactness of normalized antisymmetric direction data gives one positive margin for each k that works at all larger cardinalities. The margin is existential: its numerical size is not determined. No ordinary extremal configuration or realization of arbitrary direction data is assumed. The seventeen-point interval is now 135 degrees < alpha 17 <= 140 degrees. Full build and all 308 axiom checks passed using only standard Lean foundations. Matching sharp general lower bounds and the full SendovClaim remain unproved; exact values still cover n=3 through 8. No novelty or award claim is made.
+This update supplies the explicit lower bound alpha N >= (1-1/k)*pi + pi/(k*(N^2+1)) for k>0 and N>2^k. An empty phase bin shortens every covering sector, and binary counting transfers the estimate to ordinary points. Monotonicity gives one explicit margin for all N>2^k. The seventeen-point interval is now (135+9/58) degrees <= alpha 17 <= 140 degrees. Full build and all 320 axiom checks passed using only standard Lean foundations. Matching sharp general lower bounds and SendovClaim remain unproved; exact values still cover n=3 through 8. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -170,11 +170,20 @@ Earlier snapshots are preserved: [uniform lower bound and limit, 2026-09-27](jsp
 - A compact relaxation of normalized antisymmetric direction assignments,
   with continuous finite maximum triple angle. The counting obstruction on
   this larger space gives alpha N > (1-1/k)*pi for N>2^k. For each k, one
-  existential positive margin works for every N>2^k. Its numerical size is
-  not determined. Thus the seventeen-point interval improves to
+  existential positive margin works for every N>2^k. That compactness proof alone does not determine its numerical size; the
+  explicit refinement below now supplies a margin. The compactness result gives
   3*pi/4 < alpha 17 <= 7*pi/9, without proving the exact value.
   No attainment of alpha by ordinary configurations or realizability of
   arbitrary abstract direction assignments is asserted.
+
+- An explicit finite-phase refinement now gives
+  alpha N >= (1-1/k)*pi + pi/(k*(N^2+1)) for k>0 and N>2^k.
+  An empty one-of-(N^2+1) phase bin shortens all covering sectors, with
+  harmless dummy diagonal directions and no extra geometric premise.
+  Monotonicity replaces N in the denominator by 2^k+1 for a common explicit
+  margin at all larger cardinalities. The seventeen-point interval becomes
+  (871/1160)*pi <= alpha 17 <= (7/9)*pi, or approximately 135.155172 to
+  140 degrees. This is still a non-sharp lower bound, not the full classification.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -231,6 +240,8 @@ Main declarations (namespace `Prize.JSP404`):
 | Combined intervals and seventeen points | `GeneralAngleBounds.lean`: `low_band_alpha_bounds`, `high_band_alpha_bounds`, `alpha_seventeen_bounds` |
 | Compact normalized direction space | `CompactDirectionSpace.lean`: `isCompact_unitDirectionAssignments`, `continuousOn_maximumAssignmentAngle`, `GeneralizedDirections.normalizedAssignment_angle` |
 | Strict general lower bound and common margin | `StrictUniformLowerBound.lean`: `exists_uniform_direction_margin`, `uniform_alpha_strict_lower`, `exists_uniform_alpha_gap`, `alpha_seventeen_strict_bounds` |
+| Empty phase bin and shortened sectors | `FinitePeriodicGap.lean`, `QuantitativeSectorCover.lean`: `exists_empty_phase_bin`, `exists_short_sector_cover` |
+| Explicit positive margin and seventeen-point bound | `QuantitativeLowerBound.lean`: `quantitative_alpha_lower`, `quantitative_alpha_lower_uniform`, `alpha_seventeen_quantitative_bounds` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
