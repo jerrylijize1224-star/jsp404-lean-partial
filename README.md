@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-28. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-09-29. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-28 quantitative lower-bound snapshot](jsp404-quantitative-lower-20260928.zip) · [SHA-256](jsp404-quantitative-lower-20260928.zip.sha256).
+[Download the 2026-09-29 unordered-edge lower-bound snapshot](jsp404-edge-lower-20260929.zip) · [SHA-256](jsp404-edge-lower-20260929.zip.sha256).
 
-Archive SHA-256: `1b0bb80c01fa2667de37759726aa8cf4a2a148c3d5f655ea66fbd0d62a31ac43`.
+Archive SHA-256: `a4859354a4eed7afdea8280a6cded8fed33b94709cd0461605e93dba1833a265`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update supplies the explicit lower bound alpha N >= (1-1/k)*pi + pi/(k*(N^2+1)) for k>0 and N>2^k. An empty phase bin shortens every covering sector, and binary counting transfers the estimate to ordinary points. Monotonicity gives one explicit margin for all N>2^k. The seventeen-point interval is now (135+9/58) degrees <= alpha 17 <= 140 degrees. Full build and all 320 axiom checks passed using only standard Lean foundations. Matching sharp general lower bounds and SendovClaim remain unproved; exact values still cover n=3 through 8. No novelty or award claim is made.
+This update removes reverse-pair and diagonal duplication from the finite direction family. It proves alpha N >= (1-1/k)*pi + pi/(k*(choose(N,2)+1)) for k>0 and N>2^k, strictly improving the previous explicit estimate. Monotonicity gives one explicit margin for every larger cardinality. The seventeen-point interval is now (135+45/137) degrees <= alpha 17 <= 140 degrees, with lower endpoint approximately 135.328467 degrees. Full build and all 332 axiom checks passed using only standard Lean foundations. This is a modest non-sharp improvement: matching sharp general lower bounds and SendovClaim remain unproved; exact values still cover n=3 through 8. No novelty or award claim is made.
 
-Earlier snapshots are preserved: [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -185,6 +185,14 @@ Earlier snapshots are preserved: [strict lower bound and existential margin, 202
   (871/1160)*pi <= alpha 17 <= (7/9)*pi, or approximately 135.155172 to
   140 degrees. This is still a non-sharp lower bound, not the full classification.
 
+- One representative for each unordered edge removes the reverse and diagonal
+  duplicates: alpha N >= (1-1/k)*pi + pi/(k*(choose(N,2)+1)) for k>0 and N>2^k.
+  This is formally proved strictly stronger than the preceding N^2 estimate.
+  The representative-counting interface is general, and its label order adds
+  no geometric assumption to ordinary configurations. The seventeen-point
+  interval improves to (103/137)*pi <= alpha 17 <= (7/9)*pi, approximately
+  135.328467 to 140 degrees. The sharp target remains unproved.
+
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
 `n <= t < n + 1`. Here `n >= 2`; each geometric structure records its precise
@@ -242,6 +250,7 @@ Main declarations (namespace `Prize.JSP404`):
 | Strict general lower bound and common margin | `StrictUniformLowerBound.lean`: `exists_uniform_direction_margin`, `uniform_alpha_strict_lower`, `exists_uniform_alpha_gap`, `alpha_seventeen_strict_bounds` |
 | Empty phase bin and shortened sectors | `FinitePeriodicGap.lean`, `QuantitativeSectorCover.lean`: `exists_empty_phase_bin`, `exists_short_sector_cover` |
 | Explicit positive margin and seventeen-point bound | `QuantitativeLowerBound.lean`: `quantitative_alpha_lower`, `quantitative_alpha_lower_uniform`, `alpha_seventeen_quantitative_bounds` |
+| Unordered edge representatives and stronger explicit bound | `EdgeDirectionLowerBound.lean`: `GeneralizedDirections.card_le_of_representatives`, `quantitativeAngle_lt_edgeAngle`, `edge_alpha_lower_uniform`, `alpha_seventeen_edge_bounds` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
