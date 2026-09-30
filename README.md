@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-30 sharp dyadic snapshot](jsp404-dyadic-sharp-20260930.zip) · [SHA-256](jsp404-dyadic-sharp-20260930.zip.sha256).
+[Download the 2026-09-30 weighted-cover snapshot](jsp404-weighted-cover-20260930.zip) · [SHA-256](jsp404-weighted-cover-20260930.zip.sha256).
 
-Archive SHA-256: `4dd48b2e63aa373bbfba945e608867fb6d07d6a301d2deb018600bd90d60eae6`.
+Archive SHA-256: `81fe766cddf4e8fe4e7fdd9357a1792526e191fbcbba706475e0c7324040752e`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update proves alpha(2^k) = (1-1/k)*pi and the full IsSharpBound statement for every k>=2. Saturation of the binary cover, connectedness, and actual rotating open sectors give the matching lower bound at the previously unresolved endpoints. The existing binary constructions supply the upper bound. In particular, alpha 16 = 135 degrees and alpha 32 = 144 degrees. Full build and all 347 axiom checks passed using only standard Lean foundations. This formalizes a classical infinite subfamily already attributed in the literature; no mathematical novelty or first-formalization claim is made. General non-dyadic sharp lower bounds and SendovClaim remain unproved. The seventeen-point interval remains (135+45/137) degrees <= alpha 17 <= 140 degrees.
+This update adds twelve verified lemmas for weighted Boolean capacity and actual rotating-sector deficits. If f(v) is the number of unused relations at a vertex, sum_v 2^f(v) <= 2^k. Every fixed vertex and relation also has an unused rotation, but the rotation may depend on both choices; a simultaneous geometric deficit estimate is still missing. The full build and all 359 axiom checks passed using only standard Lean foundations. This update does not improve numerical alpha bounds. Exact values for 3–8 points and every 2^k (k>=2) remain proved, while the general non-dyadic sharp lower bounds and SendovClaim remain unproved. The seventeen-point interval remains (135+45/137) degrees <= alpha 17 <= 140 degrees. No mathematical novelty or first-formalization claim is made.
 
-Earlier snapshots are preserved: [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -204,6 +204,16 @@ Earlier snapshots are preserved: [unordered-edge explicit margin, 2026-09-29](js
   alpha 16 = 135 degrees and alpha 32 = 144 degrees. This is a classical
   infinite subfamily, not the complete non-dyadic Sendov classification.
 
+- A weighted Boolean-cover inequality retains all compatible codes at each
+  vertex. If f(v) relations have no incident edge at v, then sum_v 2^f(v) <= 2^k.
+  In particular, N plus the number of vertices missing any one fixed relation
+  is at most 2^k. Actual rotating open sectors satisfy this inequality whenever
+  pi/(2*k) < r and 2*r < pi-a for an angle cap a >= 0.
+- Every fixed vertex and relation has some unused position during reversal.
+  That position can depend on both choices. A lower bound on simultaneous
+  total free-bit weight at one rotation remains unproved. These are verified
+  counting tools; this update does not improve any numerical alpha bound.
+
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
 `n <= t < n + 1`. Here `n >= 2`; each geometric structure records its precise
@@ -265,6 +275,8 @@ Main declarations (namespace `Prize.JSP404`):
 | Equality obstruction for connected reversing covers | `SaturatedCover.lean`: `saturated_cover_incident`, `card_lt_two_pow_of_open_reversing_cover` |
 | Actual rotating open sectors and strict count | `RotatingSectorCover.lean`: `exists_rotating_open_sector`, `GeneralizedDirections.card_lt_two_pow_of_strict_angle` |
 | All sharp dyadic values | `DyadicSharp.lean`: `guaranteedAngle_dyadic_bound`, `alpha_dyadic`, `dyadic_isSharpBound`, `alpha_sixteen`, `alpha_thirty_two` |
+| Weighted Boolean capacity | `WeightedDirectionCover.lean`: `compatibleCoverCode_card`, `weighted_card_le_two_pow_of_no_two_step_cover`, `card_add_isolated_le_two_pow` |
+| Rotating sector deficit interface | `RotatingCoverDeficit.lean`: `exists_unused_relation_of_open_reversal`, `GeneralizedDirections.rotating_weighted_capacity`, `GeneralizedDirections.exists_rotating_unused` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -288,7 +300,9 @@ it is not a claim of mathematical novelty or first formalization.
    theorem. Concrete ordinary-point constructions now give both bands' general
    upper bounds. The matching general lower bounds away from binary cardinalities are still missing. Exact
    ordinary cases n=3 through n=8 and all 2^k (k>=2) are proved;
-   general non-dyadic cases remain incomplete.
+   general non-dyadic cases remain incomplete. The weighted rotating-cover route
+   additionally needs a lower estimate of simultaneous free-bit weight at a
+   common rotation; separate existence of unused positions is insufficient.
 
 The earlier triangle-restriction hypothesis in
 `research/jsp404-maximal-centres.md` is now derived for actual finite centre
