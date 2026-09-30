@@ -11,14 +11,14 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-30 weighted-cover snapshot](jsp404-weighted-cover-20260930.zip) · [SHA-256](jsp404-weighted-cover-20260930.zip.sha256).
+[Download the 2026-09-30 deficit-obstruction snapshot](jsp404-deficit-obstruction-20260930.zip) · [SHA-256](jsp404-deficit-obstruction-20260930.zip.sha256).
 
-Archive SHA-256: `81fe766cddf4e8fe4e7fdd9357a1792526e191fbcbba706475e0c7324040752e`.
+Archive SHA-256: `98fa7d896e55cbeaf9385c593bc8d909344b3d211bdb08a75305c1d6b8237ef9`.
 Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
 
-This update adds twelve verified lemmas for weighted Boolean capacity and actual rotating-sector deficits. If f(v) is the number of unused relations at a vertex, sum_v 2^f(v) <= 2^k. Every fixed vertex and relation also has an unused rotation, but the rotation may depend on both choices; a simultaneous geometric deficit estimate is still missing. The full build and all 359 axiom checks passed using only standard Lean foundations. This update does not improve numerical alpha bounds. Exact values for 3–8 points and every 2^k (k>=2) remain proved, while the general non-dyadic sharp lower bounds and SendovClaim remain unproved. The seventeen-point interval remains (135+45/137) degrees <= alpha 17 <= 140 degrees. No mathematical novelty or first-formalization claim is made.
+This update adds seven verified lemmas. The total unused vertex-sector budget is N + sum_v f(v) <= 2^k, so N+1=2^k permits at most one free pair at any rotation. An actual equilateral triangle has an unused position for each of its six vertex-sector pairs, while no two pairs are unused simultaneously. This rules out an unrestricted quantifier exchange; it is not a counterexample to Sendov's classification and does not exclude stronger estimates using additional large-N information. The full build and all 366 axiom checks passed with standard Lean foundations only. Numerical alpha bounds are unchanged; the general non-dyadic sharp lower bounds and SendovClaim remain unproved. No novelty or first-formalization claim is made.
 
-Earlier snapshots are preserved: [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -214,6 +214,13 @@ Earlier snapshots are preserved: [sharp dyadic values, 2026-09-30](jsp404-dyadic
   total free-bit weight at one rotation remains unproved. These are verified
   counting tools; this update does not improve any numerical alpha bound.
 
+- The total free-slot budget is now N + sum_v f(v) <= 2^k. If N+1=2^k,
+  at most one vertex-sector pair can be free at any rotation. An actual ordinary
+  equilateral triangle supplies a counterexample to unrestricted simultaneous
+  deficit claims: each of its six vertex-sector pairs has an unused position,
+  but no two can be unused at the same position. This does not refute Sendov's
+  classification or exclude overlap estimates using additional large-N data.
+
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
 `n <= t < n + 1`. Here `n >= 2`; each geometric structure records its precise
@@ -277,6 +284,8 @@ Main declarations (namespace `Prize.JSP404`):
 | All sharp dyadic values | `DyadicSharp.lean`: `guaranteedAngle_dyadic_bound`, `alpha_dyadic`, `dyadic_isSharpBound`, `alpha_sixteen`, `alpha_thirty_two` |
 | Weighted Boolean capacity | `WeightedDirectionCover.lean`: `compatibleCoverCode_card`, `weighted_card_le_two_pow_of_no_two_step_cover`, `card_add_isolated_le_two_pow` |
 | Rotating sector deficit interface | `RotatingCoverDeficit.lean`: `exists_unused_relation_of_open_reversal`, `GeneralizedDirections.rotating_weighted_capacity`, `GeneralizedDirections.exists_rotating_unused` |
+| Total free-slot budget | `CoverDeficitBudget.lean`: `card_add_free_slots_le_two_pow`, `near_saturated_free_slots_le_one`, `near_saturated_free_slot_unique` |
+| Actual rotating obstruction | `RotatingDeficitObstruction.lean`: `GeneralizedDirections.exists_rotating_unique_free_slot`, `exists_ordinary_rotating_deficit_obstruction`; `ThreePoints.lean`: `exists_three_point_equiangular` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
