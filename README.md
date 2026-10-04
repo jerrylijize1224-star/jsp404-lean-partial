@@ -2,7 +2,7 @@
 
 Published by GitHub account `jerrylijize1224-star`, from the project owner's AI-assisted Codex development.
 
-Snapshot date: 2026-09-30. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-10-04. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -11,14 +11,13 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-09-30 deficit-obstruction snapshot](jsp404-deficit-obstruction-20260930.zip) · [SHA-256](jsp404-deficit-obstruction-20260930.zip.sha256).
+[Download the 2026-10-04 exact nine- and ten-point snapshot](jsp404-nine-ten-exact-20261004.zip) · [SHA-256](jsp404-nine-ten-exact-20261004.zip.sha256).
 
-Archive SHA-256: `98fa7d896e55cbeaf9385c593bc8d909344b3d211bdb08a75305c1d6b8237ef9`.
-Extract the ZIP and run the reproduction commands inside its project directory. File paths below refer to that directory; the archive includes a per-file manifest.
+SHA-256: `da99e8c6ff84b728b30e010f8f2664ee6b04bc69ae28b26534f699c6fba9ccd4`
 
-This update adds seven verified lemmas. The total unused vertex-sector budget is N + sum_v f(v) <= 2^k, so N+1=2^k permits at most one free pair at any rotation. An actual equilateral triangle has an unused position for each of its six vertex-sector pairs, while no two pairs are unused simultaneously. This rules out an unrestricted quantifier exchange; it is not a counterexample to Sendov's classification and does not exclude stronger estimates using additional large-N information. The full build and all 366 axiom checks passed with standard Lean foundations only. Numerical alpha bounds are unchanged; the general non-dyadic sharp lower bounds and SendovClaim remain unproved. No novelty or first-formalization claim is made.
+This update verifies alpha 9 = alpha 10 = 5*pi/7 (900/7 degrees), including full IsSharpBound statements. The lower certificate and geometric transfer are attributed to zilan520's [PR #100](https://github.com/TheJustinSunPrize/awards/pull/100), pinned to commit d869ab901722fab0b2d980b38b7bd958cf52c128. All 59 selected dependency modules were rebuilt locally with trust=0 and connected to this project's existing upper construction and original targets. The full build (2768 jobs including dependencies) and all 373 axiom checks passed with standard Lean foundations only. This is verified reuse and integration, not an independently generated lower certificate or a novelty claim. Exact values now cover 3–10 and all powers of two at least four; the full general classification remains unproved.
 
-Earlier snapshots are preserved: [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [deficit budget and obstruction, 2026-09-30](jsp404-deficit-obstruction-20260930.zip), [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
@@ -212,7 +211,7 @@ Earlier snapshots are preserved: [weighted Boolean cover, 2026-09-30](jsp404-wei
 - Every fixed vertex and relation has some unused position during reversal.
   That position can depend on both choices. A lower bound on simultaneous
   total free-bit weight at one rotation remains unproved. These are verified
-  counting tools; this update does not improve any numerical alpha bound.
+  counting tools; those tools alone do not improve numerical alpha bounds.
 
 - The total free-slot budget is now N + sum_v f(v) <= 2^k. If N+1=2^k,
   at most one vertex-sector pair can be free at any rotation. An actual ordinary
@@ -220,6 +219,15 @@ Earlier snapshots are preserved: [weighted Boolean cover, 2026-09-30](jsp404-wei
   deficit claims: each of its six vertex-sector pairs has an unused position,
   but no two can be unused at the same position. This does not refute Sendov's
   classification or exclude overlap estimates using additional large-N data.
+
+- Exact ordinary nine- and ten-point values are now connected to this project's
+  original definitions: alpha 9 = alpha 10 = 5*pi/7, with the full IsSharpBound
+  statement. The nine-point lower certificate and actual geometry-to-model
+  transfer are attributed unchanged imports from zilan520's PR #100 at
+  d869ab901722fab0b2d980b38b7bd958cf52c128, recompiled locally with --trust=0.
+  This project's existing first-band construction supplies the matching upper
+  bound. This is verified reuse and integration, not an independently generated
+  nine-point lower proof. It adds no convexity or general-position assumption.
 
 The four-centre results bound the corresponding sum of four powers of two by
 `2^n` when `n <= t < n + 1/2`, and by `2^n + 2^(n-2)` when
@@ -286,6 +294,7 @@ Main declarations (namespace `Prize.JSP404`):
 | Rotating sector deficit interface | `RotatingCoverDeficit.lean`: `exists_unused_relation_of_open_reversal`, `GeneralizedDirections.rotating_weighted_capacity`, `GeneralizedDirections.exists_rotating_unused` |
 | Total free-slot budget | `CoverDeficitBudget.lean`: `card_add_free_slots_le_two_pow`, `near_saturated_free_slots_le_one`, `near_saturated_free_slot_unique` |
 | Actual rotating obstruction | `RotatingDeficitObstruction.lean`: `GeneralizedDirections.exists_rotating_unique_free_slot`, `exists_ordinary_rotating_deficit_obstruction`; `ThreePoints.lean`: `exists_three_point_equiangular` |
+| Exact nine- and ten-point values by attributed integration | `NineTenExact.lean`: `guaranteedAngle_nine_five_pi_sevenths`, `nine_ten_isSharpBound`, `alpha_nine`, `alpha_ten` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -308,7 +317,7 @@ it is not a claim of mathematical novelty or first formalization.
 3. Matching sharp general lower bounds and assembly of the arbitrary-cardinality
    theorem. Concrete ordinary-point constructions now give both bands' general
    upper bounds. The matching general lower bounds away from binary cardinalities are still missing. Exact
-   ordinary cases n=3 through n=8 and all 2^k (k>=2) are proved;
+   ordinary cases n=3 through n=10 and all 2^k (k>=2) are proved;
    general non-dyadic cases remain incomplete. The weighted rotating-cover route
    additionally needs a lower estimate of simultaneous free-bit weight at a
    common rotation; separate existence of unused positions is insufficient.
@@ -324,20 +333,30 @@ Computational experiments are discovery aids, not proofs.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
 Pinned mathlib: `5ed2965256430c3649e86755f9576b54eca72435`.
-All transitive revisions are recorded in `lake-manifest.json`.
+All transitive mathlib revisions are recorded in `lake-manifest.json`.
+The external nine-point certificate is fixed to zilan520/awards commit
+`d869ab901722fab0b2d980b38b7bd958cf52c128`, with 59 unchanged Lean sources
+individually pinned in `research/jsp404-nine-source-lock.json`. Source snapshots
+are downloaded into the ignored `.lake/external` directory and are not bundled.
 
 Install [elan](https://lean-lang.org/install/), then run in the extracted
 project root, preserving the supplied lock file:
 
 ```sh
+python3 scripts/prepare_nine_certificate.py
 lake exe cache get
+python3 scripts/build_nine_certificate.py
 lake build
 lake env lean Prize/Audit.lean
 ```
 
 The source project was checked with `./scripts/lake.sh build`, followed by
 `./scripts/lake.sh env lean Prize/Audit.lean`; both exited successfully.
-The wrapper only selects the locally installed pinned toolchain.
+The wrapper selects the locally installed pinned toolchain and checks the
+external certificate source hashes. External modules are compiled with
+`--trust=0`; their per-module logs are included under `verification/nine-certificate/`.
+The external certificate and ordinary-plane transfer are attributed reuse,
+not independently generated lower proofs by this project.
 The included logs are `verification/build.log` and `verification/axioms.log`.
 Build job counts include dependencies and are not counts of new theorems.
 This snapshot has not received an independent external
@@ -366,16 +385,20 @@ complete result for that problem is claimed either.
 - [Official problem record](https://github.com/TheJustinSunPrize/awards/blob/main/problems/catalog-0401-0500.md#JSP-000404).
 - [PR #42](https://github.com/TheJustinSunPrize/awards/pull/42) reports source
   corrections and partial formalizations.
-- [PR #100](https://github.com/TheJustinSunPrize/awards/pull/100) reports exact
-  values for N=5–10 and all dyadic thresholds.
+- [PR #100](https://github.com/TheJustinSunPrize/awards/pull/100), by zilan520,
+  supplies this snapshot's externally pinned nine-point lower certificate and
+  necessary geometric transfer. The selected 59 unchanged modules were rebuilt
+  locally. Its separate upper-bound package and full original submission were
+  not rebuilt here; our existing upper construction is used instead.
 - [PR #647](https://github.com/TheJustinSunPrize/awards/pull/647) reports the
   eleven-point bound and exact values for N=11–16, with N=16 attributed to
   prior work.
 - [PR #300](https://github.com/TheJustinSunPrize/awards/pull/300) describes
   another overlapping partial development and the general counting gap.
 
-The PR descriptions were inspected, but their complete proof packages were
-not independently rebuilt here. This list is not an exhaustive priority
+The other PR descriptions were inspected, but their complete proof packages
+were not independently rebuilt here. The selected PR #100 dependency closure
+was rebuilt as described above; no independent Nanoda run is claimed here. This list is not an exhaustive priority
 search. Elementary exact cases and several proof ingredients overlap with
 existing work. Whether the particular four-centre formalization adds a new
 contribution requires further comparison and review.
