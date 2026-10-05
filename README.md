@@ -11,34 +11,36 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-10-05 odd near-dyadic snapshot](jsp404-odd-near-dyadic-20261005.zip) · [SHA-256](jsp404-odd-near-dyadic-20261005.zip.sha256).
+[Download the 2026-10-05 all near-dyadic snapshot](jsp404-all-near-dyadic-20261005.zip) · [SHA-256](jsp404-all-near-dyadic-20261005.zip.sha256).
 
-SHA-256: `d7d23da4e50e8fb01b55c294fbdd17b4e46ff88f7844fbd14fbec81fa3fa4a74`
+SHA-256: `c27e2c3a333afbba8a3e17da308e08e3f0fc520fa98e1afdc92647ccb36bdad6`
 
-This update proves the classical exact values alpha 31 = 144 degrees and alpha 127 = 1080/7 degrees, as instances of alpha(2^k-1)=(1-1/k)*pi for every odd k>=3, including full IsSharpBound. The local vacancy-parity proof uses rotating sector covers and has no dependency on the finite nine- or eleven-point certificates. Separately, the snapshot integrates the attributed PR #647 eleven-point certificate to verify all values 11–16. Full build: 3140 jobs including dependencies; all 397 axiom checks passed using standard Lean foundations only. No mathematical novelty, first-formalization or complete-solution claim is made. The general classification and sharp 17-point value remain unproved.
+This update removes the odd-exponent restriction and proves alpha(2^k-1)=(1-1/k)*pi for every k>=3, including full IsSharpBound. New concrete exact values are alpha 63=150 degrees and alpha 255=157.5 degrees. A rotation by one sector gives a coordinate cycle followed by one bit flip; its permutation sign and vacancy color contradict the connected-cover invariant. The proof depends only on 28 local modules and mathlib. Full build: 3142 jobs including dependencies; all 412 axiom checks passed using standard Lean foundations only. These are classical mathematical values, with no novelty or first-formalization claim. The general classification and sharp 17-point value remain unproved.
 
-Earlier snapshots are preserved: [exact nine and ten points, 2026-10-04](jsp404-nine-ten-exact-20261004.zip), [deficit budget and obstruction, 2026-09-30](jsp404-deficit-obstruction-20260930.zip), [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [odd-exponent predecessor values, 2026-10-05](jsp404-odd-near-dyadic-20261005.zip), [exact nine and ten points, 2026-10-04](jsp404-nine-ten-exact-20261004.zip), [deficit budget and obstruction, 2026-09-30](jsp404-deficit-obstruction-20260930.zip), [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
-This snapshot additionally verifies the infinite subfamily
-`alpha (2^k-1) = (1-1/k)*pi` for odd `k >= 3`, with full `IsSharpBound`.
-In particular, `alpha 31 = 4*pi/5 = 144 degrees` and
-`alpha 127 = 6*pi/7 = 1080/7 degrees`. The local proof uses the invariant
-(permutation sign times vacancy checkerboard color) along connected rotating
-sector covers. Its dependency closure does not use the finite nine- or
-eleven-point certificates. These are classical mathematical values; no new
-discovery or first-formalization claim is made. Even exponents are not covered
-by this new subfamily. See `research/jsp404-odd-near-dyadic.md`.
+This snapshot verifies `alpha (2^k-1) = (1-1/k)*pi` for **every** `k >= 3`,
+with full `IsSharpBound`. It removes the earlier odd-exponent restriction.
+New concrete values include `alpha 63 = 5*pi/6 = 150 degrees` and
+`alpha 255 = 7*pi/8 = 157.5 degrees`; the earlier 31/127 cases remain verified.
+A rotation by one sector cyclically reindexes cube coordinates and flips one bit.
+For all dimensions at least three this is an even permutation reversing the
+vacancy checkerboard color, contradicting the connected-cover invariant.
+Its dependency closure contains 28 local modules and mathlib only, with no
+finite nine- or eleven-point certificates. These are classical mathematical
+values; no new discovery or first-formalization claim is made.
+See `research/jsp404-near-dyadic.md` for the proof and limitations.
 
-The same snapshot integrates the attributed eleven-point lower certificate
+The snapshot retains the attributed integration of the eleven-point lower certificate
 from hit1190100321's [PR #647](https://github.com/TheJustinSunPrize/awards/pull/647),
 pinned at `2d0c118ba083a5a75609e8dd586e7a478b4a6dab`. All 368 selected unchanged
 modules were rebuilt locally with `--trust=0`. Our original targets and
 existing upper construction now give `alpha N = 3*pi/4` and full `IsSharpBound`
 for `11 <= N <= 16`. This is verified reuse, not an independently generated
 certificate. Ordinary exact values now cover 3 through 16, all powers of two,
-and the odd-exponent subfamily one below a power of two. The general sharp
+and every one below a power of two with exponent at least three. The general sharp
 lower bounds and full `SendovClaim` remain unproved; the 17-point interval
 remains `(135 + 45/137) degrees <= alpha 17 <= 140 degrees`.
 
@@ -320,6 +322,7 @@ Main declarations (namespace `Prize.JSP404`):
 | Exact 11–16 by attributed integration | `ElevenSixteenExact.lean`: `eleven_sixteen_isSharpBound`, `alpha_eleven_to_sixteen` |
 | Vacancy parity along open covers | `NearSaturatedParity.lean`: `completionParity_constant`, `not_card_succ_eq_of_open_reversing_cover` |
 | Odd binary exponent minus one | `OddNearDyadicSharp.lean`: `odd_dyadic_pred_isSharpBound`, `alpha_odd_dyadic_pred`, `alpha_thirty_one`, `alpha_one_twenty_seven` |
+| All binary predecessors, k≥3 | `CubeStepParity.lean`, `NearDyadicSharp.lean`: `dyadic_pred_isSharpBound`, `alpha_dyadic_pred`, `alpha_sixty_three`, `alpha_two_fifty_five` |
 
 The independent counting arguments use floor inequalities and triangle-angle
 identities, rather than assuming the maximizing exponent profiles in the
@@ -342,7 +345,7 @@ it is not a claim of mathematical novelty or first formalization.
 3. Matching sharp general lower bounds and assembly of the arbitrary-cardinality
    theorem. Concrete ordinary-point constructions now give both bands' general
    upper bounds. The matching general lower bounds away from binary cardinalities are still missing. Exact
-   ordinary cases n=3 through n=16, all 2^k (k>=2), and 2^k-1 for odd k>=3 are proved;
+   ordinary cases n=3 through n=16, all 2^k (k>=2), and 2^k-1 for all k>=3 are proved;
    general non-dyadic cases remain incomplete. The weighted rotating-cover route
    additionally needs a lower estimate of simultaneous free-bit weight at a
    common rotation; separate existence of unused positions is insufficient.
