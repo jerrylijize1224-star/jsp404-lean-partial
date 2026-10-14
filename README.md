@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-10-07. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-10-14. **This is not a complete solution or an award claim.**
 
 This project studies JSP-000404 / Erdős 504, Blumenthal's maximum-angle
 problem, in Lean 4 with mathlib. The intended full classification remains the
@@ -9,24 +9,40 @@ It is not presented as a theorem.
 
 ## Download the current snapshot
 
-[Download the 2026-10-07 26-sector lower-bound snapshot](jsp404-sector26-lower-20261007.zip) · [SHA-256](jsp404-sector26-lower-20261007.zip.sha256).
+[Download the 2026-10-14 44-sector lower-bound snapshot](jsp404-sector44-lower-20261014.zip) · [SHA-256](jsp404-sector44-lower-20261014.zip.sha256).
 
-`fb18a12d8e4af78b08e948e362af2461cba5bd44ed934b940130cd4df531826e  jsp404-sector26-lower-20261007.zip`
+`d215bffce6511661d307fbc0cce929985f906a01f8bcaef14d8972ba167b4ed5  jsp404-sector44-lower-20261014.zip`
 
-New verified interval: **138.461538… degrees <= alpha 17 <= 140 degrees**.
-The lower endpoint is exactly `(1800/13)` degrees, with remaining gap `20/13` degrees.
-The proof applies to arbitrary finite point sets and has been connected to the original definitions.
-Full build: 3150 jobs including dependencies; all 458 axiom checks passed.
+New verified interval: **139.090909… degrees <= alpha 17 <= 140 degrees**.
+The lower endpoint is exactly `(1530/11)` degrees; the remaining gap is `10/11` degrees.
+This reduces the previous interval width by `9/22`, about 40.9%.
+The proof applies to arbitrary finite planar point sets of at least 17 points.
+Full build: 3183 jobs including dependencies; all 540 axiom checks passed.
 The exact 140-degree value and the general classification remain unproved.
 
-Earlier snapshots are preserved: [all near-dyadic values, 2026-10-05](jsp404-all-near-dyadic-20261005.zip), [odd-exponent predecessor values, 2026-10-05](jsp404-odd-near-dyadic-20261005.zip), [exact nine and ten points, 2026-10-04](jsp404-nine-ten-exact-20261004.zip), [deficit budget and obstruction, 2026-09-30](jsp404-deficit-obstruction-20260930.zip), [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
+Earlier snapshots are preserved: [26-sector lower bound, 2026-10-07](jsp404-sector26-lower-20261007.zip), [all near-dyadic values, 2026-10-05](jsp404-all-near-dyadic-20261005.zip), [odd-exponent predecessor values, 2026-10-05](jsp404-odd-near-dyadic-20261005.zip), [exact nine and ten points, 2026-10-04](jsp404-nine-ten-exact-20261004.zip), [deficit budget and obstruction, 2026-09-30](jsp404-deficit-obstruction-20260930.zip), [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
 
 ## Verified scope
 
-This snapshot raises the verified ordinary 17-point lower bound from
+This snapshot raises the verified ordinary 17-point lower bound again, to
+**`(17/22)*pi = (1530/11) degrees`**, approximately **139.090909 degrees**.
+The existing upper bound is 140 degrees, leaving exactly **`10/11` degrees**.
+The theorem `guaranteedAngle_sector44` holds for every `N >= 17`, without
+convexity or general-position assumptions.
+
+A kernel-checked 44-sector cover contains 572 types. Checked vertex domination
+compresses the family clique certificates; each family has capacity at most
+eight. The generic domination proof, all finite checks, quantization and
+transfer to the original plane definitions are verified in Lean.
+Its import closure contains 60 local modules and mathlib, with no external
+nine- or eleven-point certificate. Python is untrusted discovery/export code.
+The exact 17-point value and full classification remain unproved.
+See `research/jsp404-sector44-bound.md` for scope, provenance and reproduction.
+
+The previous 26-sector snapshot raised the verified ordinary 17-point lower bound from
 `(103/137)*pi` to **`(10/13)*pi`**, giving
 **`(1800/13) degrees <= alpha 17 <= 140 degrees`**.
-The remaining interval width is `20/13` degrees (about 1.538462 degrees).
+That earlier interval width was `20/13` degrees (about 1.538462 degrees).
 More generally, `GuaranteedAngle N (10*pi/13)` holds for every `N >= 17`.
 No convexity or general-position hypothesis is added.
 
@@ -64,7 +80,7 @@ for `11 <= N <= 16`. This is verified reuse, not an independently generated
 certificate. Ordinary exact values now cover 3 through 16, all powers of two,
 and every one below a power of two with exponent at least three. The general sharp
 lower bounds and full `SendovClaim` remain unproved; the 17-point interval
-is now `(1800/13) degrees <= alpha 17 <= 140 degrees`.
+is now `(1530/11) degrees <= alpha 17 <= 140 degrees`.
 
 
 - Actual Euclidean-plane definitions, monotonicity, general-position reduction,
@@ -346,6 +362,9 @@ Main declarations (namespace `Prize.JSP404`):
 | Vacancy parity along open covers | `NearSaturatedParity.lean`: `completionParity_constant`, `not_card_succ_eq_of_open_reversing_cover` |
 | Odd binary exponent minus one | `OddNearDyadicSharp.lean`: `odd_dyadic_pred_isSharpBound`, `alpha_odd_dyadic_pred`, `alpha_thirty_one`, `alpha_one_twenty_seven` |
 | All binary predecessors, k≥3 | `CubeStepParity.lean`, `NearDyadicSharp.lean`: `dyadic_pred_isSharpBound`, `alpha_dyadic_pred`, `alpha_sixty_three`, `alpha_two_fifty_five` |
+| Certified 44-sector lower bound | `Sector44LowerBound.lean`: `guaranteedAngle_sector44`, `sector44_alpha_lower`, `alpha_seventeen_sector44_bounds` |
+| Checked domination and finite capacity | `FiniteCliqueReduction.lean`, `Sector44Types.lean`, `Sector44ArcCertificate.lean`, `Sector44NonarcCertificate.lean`, `Sector44DiscreteBound.lean` |
+| Exact 44-sector geometric quantization | `Sector44Quantization.lean` |
 | Certified 26-sector lower bound | `Sector26LowerBound.lean`: `guaranteedAngle_sector26`, `sector26_alpha_lower`, `alpha_seventeen_sector26_bounds` |
 | Finite checker and exhaustive type cover | `FiniteCliqueCertificate.lean`, `FiniteCliqueCover.lean`, `Sector26Types.lean` |
 | Family capacity and geometric quantization | `Sector26ArcCertificate.lean`, `Sector26NonarcCertificate.lean`, `Sector26DiscreteBound.lean`, `Sector26Quantization.lean` |
@@ -405,6 +424,7 @@ python3 scripts/prepare_eleven_certificate.py
 lake exe cache get
 python3 scripts/build_nine_certificate.py
 python3 scripts/build_eleven_certificate.py
+python3 scripts/build_sector44_certificate.py
 lake build
 lake env lean Prize/Audit.lean
 ```
@@ -418,9 +438,9 @@ external certificate source hashes. External modules are compiled with
 The external certificate and ordinary-plane transfer are attributed reuse,
 not independently generated lower proofs by this project.
 The included logs are `verification/build.log` and `verification/axioms.log`.
-This run completed 3150 build jobs and all 458 listed axiom checks.
-All 46 theorems in the eight new modules are included in the audit; one
-is axiom-free, and the others use only subsets of the standard foundations.
+This run completed 3183 build jobs and all 540 listed axiom checks.
+All 82 theorems in the thirty-three new modules are included in the audit.
+Two audit entries are axiom-free; all others use subsets of the standard foundations.
 Build job counts include dependencies and are not counts of new theorems.
 This snapshot has not received an independent external
 review or a fresh-machine rebuild.
