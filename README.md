@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-10-22. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-10-23. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,11 +8,40 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) · [SHA-256](jsp404-seventeen-twenty-exact-20261022.zip.sha256).
+[Download the triangle-constraint snapshot](jsp404-triangle-obstruction-20261023.zip) · [SHA-256](jsp404-triangle-obstruction-20261023.zip.sha256).
 
-`0d949be263134859b041c0ec1fdea57c744f0830a05adde65c547fda3c6f415a  jsp404-seventeen-twenty-exact-20261022.zip`
+`7d22a9d7a72f0687ba04f92efe05c8a60f06eac4dfbfe317023160f5f552586d  jsp404-triangle-obstruction-20261023.zip`
 
-## New result: exact 140 degrees for 17 through 20 points
+The previous [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remains available.
+
+## New result: triangle constraints and a fixed-candidate exclusion
+
+`TriangleDirection.lean` proves that directions of three actual complex-plane
+edges satisfy one of two consistent orientation branches. It derives a nonzero
+determinant from three angles strictly below pi, so no general-position
+hypothesis is added. Independent period shifts and representatives in [0,18)
+are included.
+
+`Fixed144TriangleObstruction.lean` then excludes rows 7, 9, 10 (zero-based) of
+the exploratory 21-row model with diameter 43/6. The three edge directions
+must respectively lie in `[47/3,497/30]`, `[83/5,499/30]`, and `[64/5,77/6]`.
+These intervals contradict both triangle orientation branches. All periodic
+cases and rational inequalities are kernel-checked; the solver's UNSAT output
+is not imported. `no_complex_triangle` states the resulting geometric exclusion
+with its six explicit arc-membership conditions.
+
+These two modules add 19 audited theorems. This is a proof of a necessary
+geometric constraint and the exclusion of **one fixed candidate**, not a proof
+of 144 degrees for 21 points. The verified interval for every N=21 through 30
+remains **[140,144] degrees**.
+
+A separate variable-row search for nine single arcs and twelve triple arcs,
+including all 1330 triangle constraints, returned unknown (60-second timeout).
+It is neither a proof nor a counterexample, and other partitions were not tested.
+See `research/jsp404-144-next-step.md` for exact data and coverage.
+No mathematical novelty or priority claim is made.
+
+## Retained result: exact 140 degrees for 17 through 20 points
 
 The new proof establishes, for the original ordinary planar definitions,
 
@@ -28,7 +57,7 @@ This proof closes the entire remaining `20/31`-degree gap. The value is
 Sendov's classical mathematical result, not a claimed new numerical discovery.
 The full JSP-000404 classification remains incomplete.
 
-## Proof route
+## Proof route for the retained 140-degree result
 
 1. A continuous single-arc family below 140 degrees has capacity eight,
    by a strict circular separation and anchored half-open-bin argument.
@@ -54,7 +83,7 @@ Main modules and declarations (namespace `Prize.JSP404`):
 | `ContinuousDirectionCapacity.lean` | `ContinuousDirection.card_le_sixteen_of_assignment` |
 | `SeventeenTwentyExact.lean` | `guaranteedAngle_seven_pi_ninths`, `seventeen_twenty_isSharpBound`, `alpha_seventeen`, `alpha_eighteen`, `alpha_nineteen`, `alpha_twenty` |
 
-These four modules contain 26 newly audited theorems. The final module's
+The preceding snapshot added 26 audited theorems in these four modules. The final module's
 import closure contains 94 local modules and mathlib, without the external
 nine- or eleven-point certificates. See
 `research/jsp404-seventeen-twenty-exact.md` for the argument and scope.
@@ -74,12 +103,12 @@ not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-Full project build passed: **3254 jobs**, including dependencies.
-Axiom audit: **2338 declarations passed**, including all 26 new theorems.
-Four entries are axiom-free; the rest use only subsets of `propext`,
-`Classical.choice`, and `Quot.sound`.
-The original `Basic.lean`, `Target.lean`, toolchain and dependency lock files
-are byte-identical to the preceding sealed snapshot.
+Full project build passed: **3256 jobs**, including dependencies.
+Axiom audit: **2357 declarations passed**, including all 19 new theorems.
+Four entries are axiom-free; all remaining entries use only subsets of
+`propext`, `Classical.choice`, and `Quot.sound`. Original `Basic.lean`,
+`Target.lean`, the toolchain and all dependency pins match the preceding sealed
+17-20-point exact snapshot byte for byte.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
 Pinned mathlib: `5ed2965256430c3649e86755f9576b54eca72435`.
@@ -140,8 +169,3 @@ This snapshot is prepared for the project owner's repository, not as a complete
 prize submission. Sealed archives retain the publication notes written before
 their upload; later fixed commits are recorded separately in
 `research/jsp404-publication.md` and repository history.
-
-
-## Earlier snapshots
-
-Earlier snapshots are preserved: [continuous three-arc exclusion, 2026-10-21](jsp404-three-arc-exclusion-20261021.zip), [62-sector lower bound, 2026-10-21](jsp404-sector62-lower-20261021.zip), [44-sector lower bound, 2026-10-14](jsp404-sector44-lower-20261014.zip), [26-sector lower bound, 2026-10-07](jsp404-sector26-lower-20261007.zip), [all near-dyadic values, 2026-10-05](jsp404-all-near-dyadic-20261005.zip), [odd-exponent predecessor values, 2026-10-05](jsp404-odd-near-dyadic-20261005.zip), [exact nine and ten points, 2026-10-04](jsp404-nine-ten-exact-20261004.zip), [deficit budget and obstruction, 2026-09-30](jsp404-deficit-obstruction-20260930.zip), [weighted Boolean cover, 2026-09-30](jsp404-weighted-cover-20260930.zip), [sharp dyadic values, 2026-09-30](jsp404-dyadic-sharp-20260930.zip), [unordered-edge explicit margin, 2026-09-29](jsp404-edge-lower-20260929.zip), [explicit phase-bin margin, 2026-09-28](jsp404-quantitative-lower-20260928.zip), [strict lower bound and existential margin, 2026-09-27](jsp404-strict-lower-20260927.zip), [uniform lower bound and limit, 2026-09-27](jsp404-uniform-lower-20260927.zip), [first-band general upper bound, 2026-09-27](jsp404-first-band-upper-20260927.zip), [general dyadic upper bound, 2026-09-26](jsp404-dyadic-upper-20260926.zip), [general binary scales and sixteen-point upper bound, 2026-09-26](jsp404-binary-scales-20260926.zip), [exact seven- and eight-point values, 2026-09-26](jsp404-binary-eight-20260926.zip), [exact five-point value, 2026-09-26](jsp404-five-points-20260926.zip), [exact six-point value, 2026-09-25](jsp404-six-points-20260925.zip), [ordinary lower bounds, 2026-09-25](jsp404-first-band-lower-20260925.zip), [pentagon ordering, 2026-09-23](jsp404-pentagon-order-20260923.zip), [exterior bounds and five centres, 2026-09-22](jsp404-exterior-five-20260922.zip), [convex position, 2026-09-22](jsp404-convex-position-20260922.zip), [gap restriction, 2026-09-22](jsp404-gap-restriction-20260922.zip), [finite clusters, 2026-09-21](jsp404-finite-clusters-20260921.zip), [four clusters, 2026-09-21](jsp404-four-clusters-20260921.zip), [conditional cluster counting, 2026-09-20](jsp404-cluster-counting-20260920.zip), [projective gaps, 2026-09-20](jsp404-projective-gaps-20260920.zip), [four centres, 2026-09-19](jsp404-four-centre-20260919.zip), [2026-09-18](jsp404-partial-20260918.zip). Sealed archives retain the publication notes written before their upload; repository history records subsequent publication.
