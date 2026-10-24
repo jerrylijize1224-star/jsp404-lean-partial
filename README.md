@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-10-23. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-10-24. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,42 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the triangle-constraint snapshot](jsp404-triangle-obstruction-20261023.zip) · [SHA-256](jsp404-triangle-obstruction-20261023.zip.sha256).
+[Download the uniform planar-reduction snapshot](jsp404-planar-reduction-144-20261024.zip) · [SHA-256](jsp404-planar-reduction-144-20261024.zip.sha256).
 
-`7d22a9d7a72f0687ba04f92efe05c8a60f06eac4dfbfe317023160f5f552586d  jsp404-triangle-obstruction-20261023.zip`
+`16c5ca93ced9438ef1e553be0a985127e0ede3a034ef540f9ba0be20e7708df0  jsp404-planar-reduction-144-20261024.zip`
 
-The previous [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remains available.
+The previous [triangle-constraint snapshot](jsp404-triangle-obstruction-20261023.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
 
-## New result: triangle constraints and a fixed-candidate exclusion
+## New result: a uniform planar reduction below 144 degrees
+
+The finite one-arc/three-arc classification now holds for `6 <= d < 36/5`
+on the circle of period 18, extending its previous `d < 7` range. Four existing
+classification theorems have stronger statements; their old 140-degree uses
+remain valid.
+
+`ContinuousOneArc144.lean` proves that any antipodally compatible single-arc
+family in this range has at most nine members. The argument uses strict
+separation greater than 9/5 and nine anchored half-open bins.
+
+`PlanarReduction144.lean` connects this to every finite ordinary planar
+configuration with all distinct-point angles strictly below `4*pi/5`.
+It constructs a model retaining reverse-edge relations, circular diameter,
+triangle orientation consistency, and selected one-arc/three-arc covers.
+At most nine covers can be single arcs. Consequently,
+`twelve_three_covers_of_plane_counterexample` proves that **any counterexample
+with at least 21 points must yield a model with at least twelve selected
+three-arc vertices**. No general-position or convexity hypothesis is added.
+
+The two new modules add ten theorems. This is a uniform necessary-condition
+reduction, not an exclusion of the remaining model class. Selected cover types
+are not claimed to be a geometric convex-hull/interior partition. The model
+conditions are not asserted sufficient for planar realizability.
+The proved interval for N=21 through 30 is still **[140,144] degrees**.
+A 12-three-arc direction search with all 220 triangle constraints timed out
+at 60 seconds; it supplies neither a model nor an exclusion proof.
+See `research/jsp404-planar-reduction-144.md` for the argument and scope.
+
+## Retained result: triangle constraints and a fixed-candidate exclusion
 
 `TriangleDirection.lean` proves that directions of three actual complex-plane
 edges satisfy one of two consistent orientation branches. It derives a nonzero
@@ -30,7 +59,7 @@ cases and rational inequalities are kernel-checked; the solver's UNSAT output
 is not imported. `no_complex_triangle` states the resulting geometric exclusion
 with its six explicit arc-membership conditions.
 
-These two modules add 19 audited theorems. This is a proof of a necessary
+The preceding snapshot added 19 audited theorems in these two modules. This is a proof of a necessary
 geometric constraint and the exclusion of **one fixed candidate**, not a proof
 of 144 degrees for 21 points. The verified interval for every N=21 through 30
 remains **[140,144] degrees**.
@@ -103,12 +132,11 @@ not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-Full project build passed: **3256 jobs**, including dependencies.
-Axiom audit: **2357 declarations passed**, including all 19 new theorems.
-Four entries are axiom-free; all remaining entries use only subsets of
-`propext`, `Classical.choice`, and `Quot.sound`. Original `Basic.lean`,
-`Target.lean`, the toolchain and all dependency pins match the preceding sealed
-17-20-point exact snapshot byte for byte.
+The full project build passed (3258 jobs), and all 2367 declarations in the
+axiom audit passed, including the 10 new theorems and four strengthened
+classification statements. Four audited declarations are axiom-free; the rest
+use only `propext`, `Classical.choice`, and `Quot.sound`. Original target
+definitions and dependency pins are unchanged.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
 Pinned mathlib: `5ed2965256430c3649e86755f9576b54eca72435`.
