@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-10-24. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-10-27. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,40 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the uniform planar-reduction snapshot](jsp404-planar-reduction-144-20261024.zip) · [SHA-256](jsp404-planar-reduction-144-20261024.zip.sha256).
+[Download the ordered-direction snapshot](jsp404-ordered-directions-144-20261027.zip) · [SHA-256](jsp404-ordered-directions-144-20261027.zip.sha256).
 
-`16c5ca93ced9438ef1e553be0a985127e0ede3a034ef540f9ba0be20e7708df0  jsp404-planar-reduction-144-20261024.zip`
+`01a31a4ff12959756de6fc9227aed4fa13169214a348634f1c73dfd83b827e25  jsp404-ordered-directions-144-20261027.zip`
 
-The previous [triangle-constraint snapshot](jsp404-triangle-obstruction-20261023.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
+The previous [uniform planar-reduction snapshot](jsp404-planar-reduction-144-20261024.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
 
-## New result: a uniform planar reduction below 144 degrees
+## New result: ordered forward-direction inequalities
+
+`OrderedDirection144.lean` proves that any finite ordinary planar configuration
+whose angles are all below 144 degrees yields an ordered direction model. A
+nonzero complex similarity makes a projection injective, and sorting that
+projection puts every forward direction in the open half-circle (0,9).
+Neither injectivity of a specified projection nor general position is added
+as a hypothesis on the original problem.
+
+For every i<j<k, write u=q(i,j), v=q(i,k), w=q(j,k). The model proves strict
+betweenness (u<v<w or w<v<u), endpoint differences at most d, and
+|u-w| at least 9-d, for one common 6<=d<36/5. The exact strict difference
+inequalities used by the search are also proved in Lean. These conditions
+are necessary; sufficiency for actual planar realizability is not claimed.
+
+The module adds 11 theorems. No new exact numerical value is established:
+N=21 through 30 remains in **[140,144] degrees**. The direct 21-point search
+timed out at 180 seconds. Incremental search exhausted a 120-second total
+budget while checking 20 points; it did not reach 21. Its intermediate SAT
+reports are not independently checked certificates. Final 10-point control
+models in both search modes passed independent exact-rational checks.
+These controls are abstract direction models, not claims about alpha(10).
+
+See `research/jsp404-ordered-directions-144.md` for the complete scope and
+recorded search limits. The unresolved step remains a uniform capacity proof
+or a complete independently verified exclusion certificate.
+
+## Retained result: a uniform planar reduction below 144 degrees
 
 The finite one-arc/three-arc classification now holds for `6 <= d < 36/5`
 on the circle of period 18, extending its previous `d < 7` range. Four existing
@@ -34,7 +61,7 @@ At most nine covers can be single arcs. Consequently,
 with at least 21 points must yield a model with at least twelve selected
 three-arc vertices**. No general-position or convexity hypothesis is added.
 
-The two new modules add ten theorems. This is a uniform necessary-condition
+The preceding reduction snapshot added ten theorems in two modules. This is a uniform necessary-condition
 reduction, not an exclusion of the remaining model class. Selected cover types
 are not claimed to be a geometric convex-hull/interior partition. The model
 conditions are not asserted sufficient for planar realizability.
@@ -132,11 +159,10 @@ not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3258 jobs), and all 2367 declarations in the
-axiom audit passed, including the 10 new theorems and four strengthened
-classification statements. Four audited declarations are axiom-free; the rest
-use only `propext`, `Classical.choice`, and `Quot.sound`. Original target
-definitions and dependency pins are unchanged.
+The full project build passed (3259 jobs), and the axiom audit passed all
+2378 declarations, including the 11 new theorems. Four declarations are
+axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
+Original target definitions and all dependency pins are unchanged.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
 Pinned mathlib: `5ed2965256430c3649e86755f9576b54eca72435`.
