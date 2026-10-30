@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-10-27. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-10-30. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,42 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the ordered-direction snapshot](jsp404-ordered-directions-144-20261027.zip) · [SHA-256](jsp404-ordered-directions-144-20261027.zip.sha256).
+[Download the exact thirty-point snapshot](jsp404-thirty-exact-20261030.zip) · [SHA-256](jsp404-thirty-exact-20261030.zip.sha256).
 
-`01a31a4ff12959756de6fc9227aed4fa13169214a348634f1c73dfd83b827e25  jsp404-ordered-directions-144-20261027.zip`
+`3761e8ba7d05f631fd0d71b70224766ae37e0de2cd9dee18c56b4b4851de3049  jsp404-thirty-exact-20261030.zip`
 
-The previous [uniform planar-reduction snapshot](jsp404-planar-reduction-144-20261024.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
+The previous [ordered-direction snapshot](jsp404-ordered-directions-144-20261027.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
 
-## New result: ordered forward-direction inequalities
+## New result: the exact thirty-point value is 144 degrees
+
+`ThreeArcTwenty.lean` proves a uniform capacity of twenty for antipodally
+compatible three-arc covers below 144 degrees. Quantizing each direction
+into ten sectors assigns each row one of twenty explicit masks; none contains
+an antipodal pair. Opposite directions along an edge force different vertices
+to have different masks. All finite checks use `decide +kernel`.
+
+`ThirtyExact.lean` combines this with the existing single-arc capacity nine:
+a finite ordinary planar configuration with all angles below 144 degrees
+has at most 29 points. Thus every N>=30 configuration has an angle at least
+144 degrees. The existing binary construction supplies the matching upper
+bound for N<=32, proving full `IsSharpBound` for 30<=N<=32 and
+**alpha(30)=4*pi/5=144 degrees**. Values 31 and 32 were already covered by
+the earlier infinite families. No general-position, convexity, or
+realizability hypothesis is added to the original target.
+
+The two new modules contain fourteen audited theorems. N=21 through 29
+remains in **[140,144] degrees**; full `SendovClaim` is still unproved.
+See `research/jsp404-thirty-exact.md` for the proof and exploration limits.
+The logs also retain a rationally checked 20-point abstract direction model
+and a 13-row pairwise three-arc model; neither asserts planar realizability.
+The 21-point support-edge search (120 seconds) and the 12-three-arc ordered
+search (90 seconds) timed out. Support-edge normalization is exploratory,
+not a Lean assumption or a dependency of the new exact-value proof.
+
+The following dated/retained accounts describe earlier milestones. Their
+old 21-through-30 intervals are superseded at N=30 by the result above.
+
+## Retained result: ordered forward-direction inequalities
 
 `OrderedDirection144.lean` proves that any finite ordinary planar configuration
 whose angles are all below 144 degrees yields an ordered direction model. A
@@ -29,8 +58,8 @@ betweenness (u<v<w or w<v<u), endpoint differences at most d, and
 inequalities used by the search are also proved in Lean. These conditions
 are necessary; sufficiency for actual planar realizability is not claimed.
 
-The module adds 11 theorems. No new exact numerical value is established:
-N=21 through 30 remains in **[140,144] degrees**. The direct 21-point search
+That earlier module added 11 theorems without a new exact numerical value:
+at that stage N=21 through 30 remained in **[140,144] degrees**. The direct 21-point search
 timed out at 180 seconds. Incremental search exhausted a 120-second total
 budget while checking 20 points; it did not reach 21. Its intermediate SAT
 reports are not independently checked certificates. Final 10-point control
@@ -65,7 +94,7 @@ The preceding reduction snapshot added ten theorems in two modules. This is a un
 reduction, not an exclusion of the remaining model class. Selected cover types
 are not claimed to be a geometric convex-hull/interior partition. The model
 conditions are not asserted sufficient for planar realizability.
-The proved interval for N=21 through 30 is still **[140,144] degrees**.
+At that earlier stage the proved interval for N=21 through 30 was **[140,144] degrees**.
 A 12-three-arc direction search with all 220 triangle constraints timed out
 at 60 seconds; it supplies neither a model nor an exclusion proof.
 See `research/jsp404-planar-reduction-144.md` for the argument and scope.
@@ -149,18 +178,18 @@ nine- or eleven-point certificates. See
 Earlier results cover exact ordinary values for 3 through 16, all powers of
 two with exponent at least two, and every one below a power of two with
 exponent at least three. Together with this snapshot, the consecutive exact
-range is now **3 through 20**. Both bands' general upper bounds and weaker
+range remains **3 through 20**, with **30** now additionally exact. Both bands' general upper bounds and weaker
 general lower bounds remain included.
 
-The next incomplete ordinary cardinalities are 21 through 30; their classical
+The next incomplete ordinary cardinalities are 21 through 29; their classical
 target is 144 degrees. The arbitrary-cardinality sharp lower bounds and the
 full `SendovClaim` remain unproved. A successful build of this snapshot must
 not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3259 jobs), and the axiom audit passed all
-2378 declarations, including the 11 new theorems. Four declarations are
+The full project build passed (3261 jobs), and the axiom audit passed all
+2392 declarations, including the 14 new theorems. 4 declarations are
 axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
 Original target definitions and all dependency pins are unchanged.
 
