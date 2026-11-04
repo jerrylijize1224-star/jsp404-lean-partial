@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-11-01. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-11-04. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,50 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the exact twenty-eight-point snapshot](jsp404-twentyeight-exact-20261101.zip) · [SHA-256](jsp404-twentyeight-exact-20261101.zip.sha256).
+[Download the exact twenty-seven-point snapshot](jsp404-twentyseven-exact-20261104.zip) · [SHA-256](jsp404-twentyseven-exact-20261104.zip.sha256).
 
-`ea4295fd8d6b084bae4d80c2e9d5fd0e473d36a224542c0c5d7de6f033ffce64  jsp404-twentyeight-exact-20261101.zip`
+`34839c6043eedccec8b383823aeb65f7479ec5496e2d230d4e715a8c6d12e9b0  jsp404-twentyseven-exact-20261104.zip`
 
-The previous [exact twenty-nine-point snapshot](jsp404-twentynine-exact-20261031.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
+The previous [exact twenty-eight-point snapshot](jsp404-twentyeight-exact-20261101.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
 
-## New result: the exact twenty-eight-point value is 144 degrees
+## New result: the exact twenty-seven-point value is 144 degrees
+
+`ThreeArcSeventeen.lean` proves that any pairwise antipodally compatible
+continuous three-arc family strictly below 144 degrees has at most seventeen
+rows. Canonicalization uses only periodic translation and cyclic renaming;
+the integer parts of the three scaled starts then have twenty explicit types.
+Eighteen distinct rows would leave exactly two of these twenty types unused,
+giving 190 possible missing pairs.
+
+`ThreeArcFractionOrder.lean` converts the necessary width and intersection
+conditions into strict orders of fractional parts, including every possible
+arc choice and the two possible periodic shifts. `ThreeArcOrderCertificate.lean`
+proves a generic proof-tree checker sound: every branch covers all options,
+and every accepted leaf closes a nonempty strict-order cycle.
+`ThreeArcOrderChecks.lean` verifies all 190 cases inside the Lean kernel.
+The finite tables, real-model connection, and missing-pair cardinality bridge
+are proved separately; no solver result or assumed normalization is trusted.
+
+The exported certificates contain 4947 nodes and 506 cycle leaves, with at
+most 36 nodes per case and depth at most 27. The standard-library-only Python
+generator is untrusted; it reproduces both Lean data/check files byte for byte.
+This reproduction is recorded separately from the kernel proofs.
+
+Combined with the existing single-arc capacity nine, the improved capacity
+seventeen bounds every ordinary planar configuration with all angles below
+144 degrees by 26 points. The existing binary construction provides the
+matching upper bound. Thus **alpha(27)=4*pi/5=144 degrees**, with full
+`IsSharpBound` for 27<=N<=32. The only new ordinary value is 27; 28 through 32
+were already exact. No convexity, general-position, realizability, or
+extremum-attainment hypothesis is added to the original problem.
+
+Eight new modules contain 241 audited declarations; 190 of these check the
+individual finite cases of one exclusion, not independent mathematical results.
+N=21 through 26 remains in **[140,144] degrees**; full `SendovClaim` is unproved.
+See `research/jsp404-twentyseven-exact.md`. No new literature or global repository
+priority search was made, and no novelty or priority claim is made.
+
+## Retained result: the exact twenty-eight-point value is 144 degrees
 
 `ThreeArcEighteen.lean` proves a capacity of eighteen for every pairwise
 antipodally compatible three-arc family strictly below 144 degrees.
@@ -40,11 +77,10 @@ construction supplies the matching upper bound, proving
 Values 29 through 32 were already exact. No convexity, general-position,
 realizability, or extremum-attainment hypothesis is added to the target.
 
-Seven new modules contain sixty-four audited theorems. N=21 through 27
-remains in **[140,144] degrees**; full `SendovClaim` is unproved.
-See `research/jsp404-twentyeight-exact.md`. The former parity plan is now
-completed; the separate eighteen-mask order exploration is explicitly
-unproved and establishes no 27-point value. No new external literature or
+That preceding snapshot added sixty-four audited theorems in seven modules.
+At that stage N=21 through 27 remained in **[140,144] degrees**; full `SendovClaim` is unproved.
+See `research/jsp404-twentyeight-exact.md`. The former parity plan was completed in that snapshot; the eighteen-mask
+order route was then unproved and is completed by the new result above. No new external literature or
 priority search was made, and no novelty claim is made.
 
 ## Retained result: the exact twenty-nine-point value is 144 degrees
@@ -102,7 +138,7 @@ search (90 seconds) timed out. Support-edge normalization is exploratory,
 not a Lean assumption or a dependency of the new exact-value proof.
 
 The following dated/retained accounts describe earlier milestones. Their
-old 21-through-30 intervals are superseded at N=28 through 30 by the results above.
+old 21-through-30 intervals are superseded at N=27 through 30 by the results above.
 
 ## Retained result: ordered forward-direction inequalities
 
@@ -239,18 +275,18 @@ nine- or eleven-point certificates. See
 Earlier results cover exact ordinary values for 3 through 16, all powers of
 two with exponent at least two, and every one below a power of two with
 exponent at least three. Together with this snapshot, the consecutive exact
-range remains **3 through 20**, with **28 through 30** additionally exact. Both bands' general upper bounds and weaker
+range remains **3 through 20**, with **27 through 30** additionally exact. Both bands' general upper bounds and weaker
 general lower bounds remain included.
 
-The next incomplete ordinary cardinalities are 21 through 27; their classical
+The next incomplete ordinary cardinalities are 21 through 26; their classical
 target is 144 degrees. The arbitrary-cardinality sharp lower bounds and the
 full `SendovClaim` remain unproved. A successful build of this snapshot must
 not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3272 jobs), and the axiom audit passed all
-2470 declarations, including the 64 new theorems. 4 declarations are
+The full project build passed (3280 jobs), and the axiom audit passed all
+2711 declarations, including the 241 new theorems. 4 declarations are
 axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
 Original target definitions and all dependency pins are unchanged.
 
