@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-11-04. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-11-05. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,43 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the exact twenty-seven-point snapshot](jsp404-twentyseven-exact-20261104.zip) · [SHA-256](jsp404-twentyseven-exact-20261104.zip.sha256).
+[Download the exact twenty-six-point snapshot](jsp404-twentysix-exact-20261105.zip) or check its [SHA-256 digest](jsp404-twentysix-exact-20261105.zip.sha256).
 
-`34839c6043eedccec8b383823aeb65f7479ec5496e2d230d4e715a8c6d12e9b0  jsp404-twentyseven-exact-20261104.zip`
+`391f5bba29279c075ec0738dbb2414df3c2c8830e3db403aff97dc5cef48fd6c  jsp404-twentysix-exact-20261105.zip`
 
-The previous [exact twenty-eight-point snapshot](jsp404-twentyeight-exact-20261101.zip) and [exact 17–20-point snapshot](jsp404-seventeen-twenty-exact-20261022.zip) remain available.
+Earlier snapshots include [27 points](jsp404-twentyseven-exact-20261104.zip), [28 points](jsp404-twentyeight-exact-20261101.zip) and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
 
-## New result: the exact twenty-seven-point value is 144 degrees
+## New result: the exact twenty-six-point value is 144 degrees
+
+`ThreeArcSixteen.lean` excludes seventeen pairwise antipodally compatible
+continuous three-arc rows strictly below 144 degrees. The existing canonical
+types and strict-order specification are reused unchanged. Seventeen distinct
+rows leave exactly three of twenty types unused, giving 1140 missing triples.
+`ThreeArcOrder17Checks.lean` checks every certificate inside the Lean kernel;
+the generalized real-model connection and sorted missing-set bridge are proved
+in `ThreeArcOrderModelGeneral.lean`.
+
+The untrusted standard-library generator removes redundant branches, exporting
+19498 nodes and 5051 cycle leaves, with at most 87 nodes per case and depth 26.
+Pruning does not change the proved checker or its rules. The complete generator
+independently reproduces the data and check source byte for byte.
+
+Combined with the existing single-arc capacity nine, the improved three-arc
+capacity sixteen bounds every ordinary planar configuration whose angles are
+all below 144 degrees by 25 points. The existing binary construction supplies
+the matching upper bound. Thus **alpha(26)=4*pi/5=144 degrees**, with full
+`IsSharpBound` for 26<=N<=32. The only new ordinary value in this snapshot is
+26; values 27 through 32 were already exact. No convexity, general-position,
+realizability, or extremum-attainment hypothesis is added.
+
+Five new modules contain 1174 audited theorems. Of these, 1140 check individual
+finite cases of one exclusion and 21 assemble those checks; they do not represent
+1140 independent mathematical discoveries. N=21 through 25 remains in
+**[140,144] degrees**; full `SendovClaim` is unproved. See
+`research/jsp404-twentysix-exact.md`. No new literature or global repository
+priority search was made; no novelty or priority claim is made.
+
+## Retained result: the exact twenty-seven-point value is 144 degrees
 
 `ThreeArcSeventeen.lean` proves that any pairwise antipodally compatible
 continuous three-arc family strictly below 144 degrees has at most seventeen
@@ -47,7 +77,7 @@ extremum-attainment hypothesis is added to the original problem.
 
 Eight new modules contain 241 audited declarations; 190 of these check the
 individual finite cases of one exclusion, not independent mathematical results.
-N=21 through 26 remains in **[140,144] degrees**; full `SendovClaim` is unproved.
+At that stage N=21 through 26 remained in **[140,144] degrees**; full `SendovClaim` is unproved.
 See `research/jsp404-twentyseven-exact.md`. No new literature or global repository
 priority search was made, and no novelty or priority claim is made.
 
@@ -138,7 +168,7 @@ search (90 seconds) timed out. Support-edge normalization is exploratory,
 not a Lean assumption or a dependency of the new exact-value proof.
 
 The following dated/retained accounts describe earlier milestones. Their
-old 21-through-30 intervals are superseded at N=27 through 30 by the results above.
+old 21-through-30 intervals are superseded at N=26 through 30 by the results above.
 
 ## Retained result: ordered forward-direction inequalities
 
@@ -275,18 +305,18 @@ nine- or eleven-point certificates. See
 Earlier results cover exact ordinary values for 3 through 16, all powers of
 two with exponent at least two, and every one below a power of two with
 exponent at least three. Together with this snapshot, the consecutive exact
-range remains **3 through 20**, with **27 through 30** additionally exact. Both bands' general upper bounds and weaker
+range remains **3 through 20**, with **26 through 30** additionally exact. Both bands' general upper bounds and weaker
 general lower bounds remain included.
 
-The next incomplete ordinary cardinalities are 21 through 26; their classical
+The next incomplete ordinary cardinalities are 21 through 25; their classical
 target is 144 degrees. The arbitrary-cardinality sharp lower bounds and the
 full `SendovClaim` remain unproved. A successful build of this snapshot must
 not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3280 jobs), and the axiom audit passed all
-2711 declarations, including the 241 new theorems. 4 declarations are
+The full project build passed (3285 jobs), and the axiom audit passed all
+3885 declarations, including the 1174 new theorems. 4 declarations are
 axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
 Original target definitions and all dependency pins are unchanged.
 
@@ -302,7 +332,7 @@ python3 scripts/prepare_eleven_certificate.py
 lake exe cache get
 python3 scripts/build_nine_certificate.py
 python3 scripts/build_eleven_certificate.py
-python3 scripts/build_sector 44_certificate.py
+python3 scripts/build_sector44_certificate.py
 python3 scripts/build_sector62_certificate.py
 lake build
 lake env lean Prize/Audit.lean
