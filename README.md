@@ -8,13 +8,39 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the exact twenty-six-point snapshot](jsp404-twentysix-exact-20261105.zip) or check its [SHA-256 digest](jsp404-twentysix-exact-20261105.zip.sha256).
+[Download the exact twenty-five-point snapshot](jsp404-twentyfive-exact-20261105.zip) or check its [SHA-256 digest](jsp404-twentyfive-exact-20261105.zip.sha256).
 
-`391f5bba29279c075ec0738dbb2414df3c2c8830e3db403aff97dc5cef48fd6c  jsp404-twentysix-exact-20261105.zip`
+`1173018d30b50e5fd583cac88fc6017a08814dce37ad47ed5a8b8fcae2d39d47  jsp404-twentyfive-exact-20261105.zip`
 
-Earlier snapshots include [27 points](jsp404-twentyseven-exact-20261104.zip), [28 points](jsp404-twentyeight-exact-20261101.zip) and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
+Earlier snapshots include [26 points](jsp404-twentysix-exact-20261105.zip), [27 points](jsp404-twentyseven-exact-20261104.zip), and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
 
-## New result: the exact twenty-six-point value is 144 degrees
+## Exact value for twenty-five points
+
+Sixteen distinct canonical types leave four of the twenty types unused.
+There are 4845 increasing quadruples of omitted labels. Lean checks 167
+concrete strict-order certificates, each on a subset of the twenty types.
+An explicit witness table assigns one contradictory subset to each quadruple.
+The 190 checks for the first two omissions establish all table entries needed
+by the coverage theorem. The model restriction lemma transfers each subset
+contradiction to the corresponding sixteen active labels.
+
+The certificates contain 9453 nodes and have at most 124 nodes per core.
+The standard-library renderer reproduces the three generated Lean files
+from the saved concrete certificates. The kernel validates the resulting
+certificates and coverage proof.
+
+The three-arc capacity is at most fifteen. Together with the single-arc
+capacity nine this bounds configurations with all angles below 144 degrees
+by 24 points. The binary construction supplies the matching upper bound.
+Thus **alpha(25)=4*pi/5=144 degrees**, with full `IsSharpBound` for 25<=N<=32.
+The result applies to arbitrary finite planar configurations.
+
+The snapshot adds seven Lean modules and 391 audited theorems. Most of the
+new declarations check or assemble the two finite verification tasks.
+Values for 21 through 24 points lie in **[140,144] degrees**. The full
+`SendovClaim` remains unproved. See `research/jsp404-twentyfive-exact.md`.
+
+## Retained result: the exact twenty-six-point value is 144 degrees
 
 `ThreeArcSixteen.lean` excludes seventeen pairwise antipodally compatible
 continuous three-arc rows strictly below 144 degrees. The existing canonical
@@ -39,8 +65,8 @@ realizability, or extremum-attainment hypothesis is added.
 
 Five new modules contain 1174 audited theorems. Of these, 1140 check individual
 finite cases of one exclusion and 21 assemble those checks; they do not represent
-1140 independent mathematical discoveries. N=21 through 25 remains in
-**[140,144] degrees**; full `SendovClaim` is unproved. See
+1140 independent mathematical discoveries. At that stage N=21 through 25 remained in
+**[140,144] degrees**. Full `SendovClaim` is unproved. See
 `research/jsp404-twentysix-exact.md`. No new literature or global repository
 priority search was made; no novelty or priority claim is made.
 
@@ -168,7 +194,7 @@ search (90 seconds) timed out. Support-edge normalization is exploratory,
 not a Lean assumption or a dependency of the new exact-value proof.
 
 The following dated/retained accounts describe earlier milestones. Their
-old 21-through-30 intervals are superseded at N=26 through 30 by the results above.
+old 21-through-30 intervals are superseded at N=25 through 30 by the results above.
 
 ## Retained result: ordered forward-direction inequalities
 
@@ -305,18 +331,18 @@ nine- or eleven-point certificates. See
 Earlier results cover exact ordinary values for 3 through 16, all powers of
 two with exponent at least two, and every one below a power of two with
 exponent at least three. Together with this snapshot, the consecutive exact
-range remains **3 through 20**, with **26 through 30** additionally exact. Both bands' general upper bounds and weaker
+range remains **3 through 20**, with **25 through 30** additionally exact. Both bands' general upper bounds and weaker
 general lower bounds remain included.
 
-The next incomplete ordinary cardinalities are 21 through 25; their classical
+The next incomplete ordinary cardinalities are 21 through 24; their classical
 target is 144 degrees. The arbitrary-cardinality sharp lower bounds and the
 full `SendovClaim` remain unproved. A successful build of this snapshot must
 not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3285 jobs), and the axiom audit passed all
-3885 declarations, including the 1174 new theorems. 4 declarations are
+The full project build passed (3292 jobs), and the axiom audit passed all
+4276 declarations, including the 391 new theorems. 4 declarations are
 axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
 Original target definitions and all dependency pins are unchanged.
 
