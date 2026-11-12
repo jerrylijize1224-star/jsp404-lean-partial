@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-11-05. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-11-12. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,47 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the exact twenty-five-point snapshot](jsp404-twentyfive-exact-20261105.zip) or check its [SHA-256 digest](jsp404-twentyfive-exact-20261105.zip.sha256).
+[Download the exact twenty-four-point snapshot](jsp404-twentyfour-exact-20261112.zip) or check its [SHA-256 digest](jsp404-twentyfour-exact-20261112.zip.sha256).
 
-`1173018d30b50e5fd583cac88fc6017a08814dce37ad47ed5a8b8fcae2d39d47  jsp404-twentyfive-exact-20261105.zip`
+`87df4efba63af898fe51f6cc61a352999913a55cba51099d58aa3b56edb788cb  jsp404-twentyfour-exact-20261112.zip`
 
-Earlier snapshots include [26 points](jsp404-twentysix-exact-20261105.zip), [27 points](jsp404-twentyseven-exact-20261104.zip), and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
+Earlier snapshots include [25 points](jsp404-twentyfive-exact-20261105.zip), [26 points](jsp404-twentysix-exact-20261105.zip), [27 points](jsp404-twentyseven-exact-20261104.zip), and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
 
-## Exact value for twenty-five points
+## Exact value for twenty-four points
+
+Fifteen distinct canonical types leave five of twenty labels unused, giving
+15504 increasing omission tuples. Lean checks 387 concrete contradiction cores
+and an explicit witness table covering every tuple. The continuous-model bridge
+therefore excludes fifteen compatible three-arc rows. A lightweight copy of
+the finite specification is proved equal to the original by `rfl`.
+
+`ThreeArcOrderDagCertificate.lean` proves the shared-node checker sound. Each
+node records the strict inequalities it requires. Cycle nodes close a nonempty
+strict cycle. At a branch, every allowed option has a checked child with a
+smaller index, and the child's requirements follow from the parent's requirements
+and that option. The root requirements follow from the selected rows' widths.
+The sorted-sublist implementation of the local requirement test has its own
+soundness lemma, valid for arbitrary input orderings.
+
+The 387 certificates contain 37867 nodes and 712405 required-edge references.
+Balanced-tree lookup retrieves node references, and acceptance checks every stored node.
+Large certificate constants are transparent noncomputable definitions, so kernel
+reduction uses their full values. Each of the 387 individual acceptance checks
+uses `decide +kernel`; `all_accepted` assembles them.
+Shared constants represent 240 edges, 60 variables and 20 labels. The saved
+input and standard-library renderers reproduce all three generated Lean files.
+
+The three-arc capacity fourteen and single-arc capacity nine bound every finite
+planar configuration whose angles are all below 144 degrees by 23 points.
+The binary construction supplies the matching upper bound. Thus
+**alpha(24)=4*pi/5=144 degrees**, with full `IsSharpBound` for 24<=N<=32.
+The result uses the original target on arbitrary finite planar configurations.
+
+Eight new modules contain 563 audited theorems, predominantly finite checks and
+their assembly. Values for 21 through 23 points lie in **[140,144] degrees**.
+Full `SendovClaim` remains unproved. See `research/jsp404-twentyfour-exact.md`.
+
+## Retained exact value for twenty-five points
 
 Sixteen distinct canonical types leave four of the twenty types unused.
 There are 4845 increasing quadruples of omitted labels. Lean checks 167
@@ -35,9 +69,9 @@ by 24 points. The binary construction supplies the matching upper bound.
 Thus **alpha(25)=4*pi/5=144 degrees**, with full `IsSharpBound` for 25<=N<=32.
 The result applies to arbitrary finite planar configurations.
 
-The snapshot adds seven Lean modules and 391 audited theorems. Most of the
+The preceding snapshot added seven Lean modules and 391 audited theorems. Most of the
 new declarations check or assemble the two finite verification tasks.
-Values for 21 through 24 points lie in **[140,144] degrees**. The full
+At that stage values for 21 through 24 points lay in **[140,144] degrees**. The full
 `SendovClaim` remains unproved. See `research/jsp404-twentyfive-exact.md`.
 
 ## Retained result: the exact twenty-six-point value is 144 degrees
@@ -194,7 +228,7 @@ search (90 seconds) timed out. Support-edge normalization is exploratory,
 not a Lean assumption or a dependency of the new exact-value proof.
 
 The following dated/retained accounts describe earlier milestones. Their
-old 21-through-30 intervals are superseded at N=25 through 30 by the results above.
+old 21-through-30 intervals are superseded at N=24 through 30 by the results above.
 
 ## Retained result: ordered forward-direction inequalities
 
@@ -331,18 +365,18 @@ nine- or eleven-point certificates. See
 Earlier results cover exact ordinary values for 3 through 16, all powers of
 two with exponent at least two, and every one below a power of two with
 exponent at least three. Together with this snapshot, the consecutive exact
-range remains **3 through 20**, with **25 through 30** additionally exact. Both bands' general upper bounds and weaker
+range remains **3 through 20**, with **24 through 30** additionally exact. Both bands' general upper bounds and weaker
 general lower bounds remain included.
 
-The next incomplete ordinary cardinalities are 21 through 24; their classical
+The next incomplete ordinary cardinalities are 21 through 23; their classical
 target is 144 degrees. The arbitrary-cardinality sharp lower bounds and the
 full `SendovClaim` remain unproved. A successful build of this snapshot must
 not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3292 jobs), and the axiom audit passed all
-4276 declarations, including the 391 new theorems. 4 declarations are
+The full project build passed (3300 jobs), and the axiom audit passed all
+4839 declarations, including the 563 new theorems. 4 declarations are
 axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
 Original target definitions and all dependency pins are unchanged.
 
