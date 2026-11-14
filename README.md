@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-11-12. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-11-13. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,13 +8,39 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the exact twenty-four-point snapshot](jsp404-twentyfour-exact-20261112.zip) or check its [SHA-256 digest](jsp404-twentyfour-exact-20261112.zip.sha256).
+[Download the checked seven-type shared-direction snapshot](jsp404-shared-seven-core-20261113.zip) or check its [SHA-256 digest](jsp404-shared-seven-core-20261113.zip.sha256).
 
-`87df4efba63af898fe51f6cc61a352999913a55cba51099d58aa3b56edb788cb  jsp404-twentyfour-exact-20261112.zip`
+`43da25f358d415fefed646151b7d91281914ef40ef32af3fc0f81786a5f1e173  jsp404-shared-seven-core-20261113.zip`
 
-Earlier snapshots include [25 points](jsp404-twentyfive-exact-20261105.zip), [26 points](jsp404-twentysix-exact-20261105.zip), [27 points](jsp404-twentyseven-exact-20261104.zip), and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
+The latest ordinary exact value remains [24 points, 144 degrees](jsp404-twentyfour-exact-20261112.zip). Earlier snapshots include [25 points](jsp404-twentyfive-exact-20261105.zip) and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
 
-## Exact value for twenty-four points
+## Checked shared-direction exclusion on seven canonical types
+
+The latest exact ordinary value remains **alpha(24)=144 degrees**. This snapshot
+excludes the complete shared-direction parameter family on canonical labels
+[10,12,13,14,15,16,19]. All row endpoints are free within their cells. A stronger
+canonicalization retains shared directions and every necessary triangle clause.
+Mixed difference constraints preserve non-strict lower bounds.
+
+The concrete specification has 126 initial edges and 77 choice clauses. Lean
+checks 572 theory-cycle certificates, the semantic CNF bridge, and an RUP-only
+LRAT refutation imported through mathlib's existing proof-term builder. Solver
+UNSAT statuses are not premises. The literal data specification is proved equal
+to the computed geometric specification by reflexivity. The result excludes any
+canonical shared model containing this core.
+
+The six new modules contain 54 audited declarations. This is one verified core
+exclusion and its supporting infrastructure, not 54 independent mathematical
+results. The standard-library renderer reproduces the complete generated source
+from saved input. Z3 4.15.4 and CaDiCaL 2.1.2 are discovery tools only.
+
+**No new ordinary exact value is claimed. Values for 21 through 23 points remain
+in [140,144] degrees.** Exploratory enumeration and four retries report 284
+UNSAT and 105 unknown representatives; the symmetry quotient and all these solver
+statuses have not been imported as exclusions. Full SendovClaim remains unproved.
+See `research/jsp404-shared-seven-core.md`.
+
+## Retained exact value for twenty-four points
 
 Fifteen distinct canonical types leave five of twenty labels unused, giving
 15504 increasing omission tuples. Lean checks 387 concrete contradiction cores
@@ -375,8 +401,8 @@ not be interpreted as a solution of all of JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3300 jobs), and the axiom audit passed all
-4839 declarations, including the 563 new theorems. 4 declarations are
+The full project build passed (3307 jobs), and the axiom audit passed all
+4893 declarations, including the 54 new audited declarations. 5 declarations are
 axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
 Original target definitions and all dependency pins are unchanged.
 
