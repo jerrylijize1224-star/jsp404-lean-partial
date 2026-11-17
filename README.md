@@ -1,6 +1,6 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-11-13. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-11-17. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
@@ -8,37 +8,54 @@ classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
 ## Download the current snapshot
 
-[Download the checked seven-type shared-direction snapshot](jsp404-shared-seven-core-20261113.zip) or check its [SHA-256 digest](jsp404-shared-seven-core-20261113.zip.sha256).
+[Download the checked 23-point snapshot](jsp404-twentythree-exact-20261117.tar.xz) or check its [SHA-256 digest](jsp404-twentythree-exact-20261117.tar.xz.sha256).
 
-`43da25f358d415fefed646151b7d91281914ef40ef32af3fc0f81786a5f1e173  jsp404-shared-seven-core-20261113.zip`
+`8a54fe9a3bf5aa04c1d9d87282bb04971c2df850e1be2c66583396db91f0e650  jsp404-twentythree-exact-20261117.tar.xz`
 
-The latest ordinary exact value remains [24 points, 144 degrees](jsp404-twentyfour-exact-20261112.zip). Earlier snapshots include [25 points](jsp404-twentyfive-exact-20261105.zip) and [17 to 20 points](jsp404-seventeen-twenty-exact-20261022.zip).
+This tar.xz archive contains all 997 files of the verified snapshot. Extract it with `tar -xJf jsp404-twentythree-exact-20261117.tar.xz`. Source paths below refer to files inside the archive. Earlier published snapshots remain available.
 
-## Checked shared-direction exclusion on seven canonical types
+## Exact ordinary value for twenty-three points
 
-The latest exact ordinary value remains **alpha(24)=144 degrees**. This snapshot
-excludes the complete shared-direction parameter family on canonical labels
-[10,12,13,14,15,16,19]. All row endpoints are free within their cells. A stronger
-canonicalization retains shared directions and every necessary triangle clause.
-Mixed difference constraints preserve non-strict lower bounds.
+This snapshot proves **alpha(23)=4*pi/5=144 degrees**, with full `IsSharpBound`
+for **23<=N<=32**, on the original arbitrary finite planar configurations.
+No general-position, convexity, rational-coordinate or realizability hypothesis
+has been added. Values for **21 and 22** remain in **[140,144] degrees**;
+the arbitrary-cardinality `SendovClaim` remains unproved.
 
-The concrete specification has 126 initial edges and 77 choice clauses. Lean
-checks 572 theory-cycle certificates, the semantic CNF bridge, and an RUP-only
-LRAT refutation imported through mathlib's existing proof-term builder. Solver
-UNSAT statuses are not premises. The literal data specification is proved equal
-to the computed geometric specification by reflexivity. The result excludes any
-canonical shared model containing this core.
+Fourteen new shared-direction core certificates supplement the previously
+checked seven-type core and the existing pairwise cores. Proved type preimage
+transports assemble a pool of 251 exclusions. The kernel checks 120 groups of
+witnesses covering all 38,760 omission sextuples. Hence fourteen shared
+three-arc rows are impossible, giving capacity thirteen. The single-arc
+capacity nine gives a total of at most 22 below 144 degrees. The existing
+five-level binary planar construction supplies the matching sharp upper bound.
 
-The six new modules contain 54 audited declarations. This is one verified core
-exclusion and its supporting infrastructure, not 54 independent mathematical
-results. The standard-library renderer reproduces the complete generated source
-from saved input. Z3 4.15.4 and CaDiCaL 2.1.2 are discovery tools only.
+Reflection first uses one common interior perturbation, preserving types and
+all necessary conditions. Only the finite type maps and exclusion transport
+are used; the perturbed model transformations are not claimed to form a strict
+group action. Source constraints, non-strict membership lower bounds, semantic
+CNF support checks, mixed difference cycles and RUP-only LRAT refutations are
+checked by Lean. Z3 4.15.4 and CaDiCaL 2.1.2 are discovery tools, not premises.
 
-**No new ordinary exact value is claimed. Values for 21 through 23 points remain
-in [140,144] degrees.** Exploratory enumeration and four retries report 284
-UNSAT and 105 unknown representatives; the symmetry quotient and all these solver
-statuses have not been imported as exclusions. Full SendovClaim remains unproved.
-See `research/jsp404-shared-seven-core.md`.
+The 97 new modules contain 532 audited declarations, predominantly checks and
+assembly of one finite proof task. These are not 532 independent mathematical
+results. The known numerical target is part of Sendov's classification; no
+mathematical novelty, first formalization or priority claim is made.
+The five larger certificates are split into Data, Checks, Lrat and final
+exclusion stages. Core09 stores its formula definitions in Data; Core10 through
+Core13 use sequential modules containing up to 1024 formula definitions apiece.
+This bounds memory use by changing module units and making formula constants
+visible across their modules. The specification, checker rules, final theorems
+and mathematical conditions are unchanged. Core11 through Core13 additionally
+batch generated commands through `CertificateBatch.lean`, omitting per-declaration
+editor information. Every enclosed command still uses Lean's ordinary command
+elaborator and usual kernel checks. Reproduction records cover every certificate
+source module and the helper's bytes and hash.
+See `research/jsp404-twentythree-exact.md` and the saved reproduction records.
+
+The retained checkpoint descriptions below are historical. Their then-current
+unresolved ranges are superseded by this section and the current summary near
+the end of this document.
 
 ## Retained exact value for twenty-four points
 
@@ -388,22 +405,25 @@ nine- or eleven-point certificates. See
 
 ## Retained results and remaining work
 
-Earlier results cover exact ordinary values for 3 through 16, all powers of
+Earlier results cover exact ordinary values for 3 through 20, all powers of
 two with exponent at least two, and every one below a power of two with
-exponent at least three. Together with this snapshot, the consecutive exact
-range remains **3 through 20**, with **24 through 30** additionally exact. Both bands' general upper bounds and weaker
-general lower bounds remain included.
+exponent at least three. This snapshot also gives exact values throughout
+23 through 32. Both bands' general upper bounds and weaker general lower
+bounds remain included.
 
-The next incomplete ordinary cardinalities are 21 through 23; their classical
-target is 144 degrees. The arbitrary-cardinality sharp lower bounds and the
-full `SendovClaim` remain unproved. A successful build of this snapshot must
-not be interpreted as a solution of all of JSP-000404.
+The next incomplete ordinary cardinalities are 21 and 22; their classical
+target is 144 degrees and their proved range remains [140,144] degrees.
+The arbitrary-cardinality sharp lower bounds and full `SendovClaim` remain
+unproved. A successful build of this snapshot is not a solution of all JSP-000404.
 
 ## Verification and reproduction
 
-The full project build passed (3307 jobs), and the axiom audit passed all
-4893 declarations, including the 54 new audited declarations. 5 declarations are
-axiom-free; the rest use only `propext`, `Classical.choice`, and `Quot.sound`.
+The full project build passed (3405 jobs), and the axiom audit
+passed all 5425 declarations, including 532 new audited
+declarations. 19 declarations are axiom-free; the actual
+axiom union is `Classical.choice, Quot.sound, propext`. Every audit entry matches
+the current `Prize/Audit.lean`; final theorem dependencies and source/log hashes
+are recorded in `research/logs/jsp404-shared23-verification-20261117.json`.
 Original target definitions and all dependency pins are unchanged.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
