@@ -1,20 +1,30 @@
 # JSP-000404: verified partial Lean development
 
-Snapshot date: 2026-11-17. **This is not a complete solution or an award claim.**
+Snapshot date: 2026-11-18. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
 maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
 classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
 
-## Download the current snapshot
+## Download the checked 22-point proof
 
-[Download the checked 23-point snapshot](jsp404-twentythree-exact-20261117.tar.xz) or check its [SHA-256 digest](jsp404-twentythree-exact-20261117.tar.xz.sha256).
+[Part 1](jsp404-twentytwo-exact-20261118.tar.xz.part01) · [Part 2](jsp404-twentytwo-exact-20261118.tar.xz.part02) · [Part 3](jsp404-twentytwo-exact-20261118.tar.xz.part03) · [Part checksums](jsp404-twentytwo-exact-20261118.parts.sha256) · [Archive checksum](jsp404-twentytwo-exact-20261118.tar.xz.sha256)
 
-`8a54fe9a3bf5aa04c1d9d87282bb04971c2df850e1be2c66583396db91f0e650  jsp404-twentythree-exact-20261117.tar.xz`
+Download the three numbered parts into one directory. Together they contain the 1,628 files of the checked source snapshot. On macOS or Linux:
 
-This tar.xz archive contains all 997 files of the verified snapshot. Extract it with `tar -xJf jsp404-twentythree-exact-20261117.tar.xz`. Source paths below refer to files inside the archive. Earlier published snapshots remain available.
+```sh
+cat jsp404-twentytwo-exact-20261118.tar.xz.part01 jsp404-twentytwo-exact-20261118.tar.xz.part02 jsp404-twentytwo-exact-20261118.tar.xz.part03 > jsp404-twentytwo-exact-20261118.tar.xz
+shasum -a 256 jsp404-twentytwo-exact-20261118.tar.xz
+tar -xJf jsp404-twentytwo-exact-20261118.tar.xz
+```
 
-## Exact ordinary value for twenty-three points
+Expected SHA-256 of the joined archive: `3de08cfa6d518e796c72b51f8d262bdc840d0f1ddba90ea3af49b0c8e342ae98`. Source paths below are inside that archive. The earlier 23-point snapshot remains available.
+
+## Exact ordinary value for twenty-two points
+
+This snapshot proves **alpha(22)=4*pi/5=144 degrees**, and `IsSharpBound` for **22<=N<=32**, for arbitrary finite planar point sets. The bound does not assume convexity, general position or attainment. With every angle below 144 degrees there can be at most nine one-arc points and twelve three-arc points. The latter bound follows from 24 new checked core exclusions, earlier exclusions, and a kernel-checked cover of all 77,520 thirteen-type sets. The existing binary planar construction supplies the matching upper bound. See `research/jsp404-twentytwo-exact.md`. The following checkpoints describe earlier stages; only 21 remains unresolved among ordinary sizes 3 to 32. This is a formalization of a value from Sendov's classification; no novelty claim is made.
+
+## Retained exact value for twenty-three points
 
 This snapshot proves **alpha(23)=4*pi/5=144 degrees**, with full `IsSharpBound`
 for **23<=N<=32**, on the original arbitrary finite planar configurations.
@@ -405,26 +415,11 @@ nine- or eleven-point certificates. See
 
 ## Retained results and remaining work
 
-Earlier results cover exact ordinary values for 3 through 20, all powers of
-two with exponent at least two, and every one below a power of two with
-exponent at least three. This snapshot also gives exact values throughout
-23 through 32. Both bands' general upper bounds and weaker general lower
-bounds remain included.
-
-The next incomplete ordinary cardinalities are 21 and 22; their classical
-target is 144 degrees and their proved range remains [140,144] degrees.
-The arbitrary-cardinality sharp lower bounds and full `SendovClaim` remain
-unproved. A successful build of this snapshot is not a solution of all JSP-000404.
+Exact ordinary values have been formalized for 3 through 20 and 22 through 32, as well as powers of two (exponent at least two) and one below powers of two (exponent at least three). At 21 points the currently proved interval is [140,144] degrees. The arbitrary-cardinality `SendovClaim` remains unproved.
 
 ## Verification and reproduction
 
-The full project build passed (3405 jobs), and the axiom audit
-passed all 5425 declarations, including 532 new audited
-declarations. 19 declarations are axiom-free; the actual
-axiom union is `Classical.choice, Quot.sound, propext`. Every audit entry matches
-the current `Prize/Audit.lean`; final theorem dependencies and source/log hashes
-are recorded in `research/logs/jsp404-shared23-verification-20261117.json`.
-Original target definitions and all dependency pins are unchanged.
+The full build passed (3847 jobs). All 6294 audit entries matched the ordered source list, including 869 new entries. 43 declarations are axiom-free. The only dependencies are Classical.choice, Quot.sound, propext. Source and raw local log hashes are listed in `research/logs/jsp404-shared22-verification-20261118.json`. Original definitions and dependency pins are unchanged.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
 Pinned mathlib: `5ed2965256430c3649e86755f9576b54eca72435`.
