@@ -1,5 +1,11 @@
 # JSP-000404: verified partial Lean development
 
+## November 23, 2026 · Finite covering theorem for the 21-point case
+
+Two Lean proofs verify that every choice of twelve of the twenty direction labels contains one of the 2,214 listed cores. This covers all 125,970 choices. The first proof checks a propositional refutation. The second intersects eight bit masks, one for each omitted label. Both archives include pinned dependencies, source, checksums and reproduction instructions. [LRAT proof](jsp404-twelve-label-cover-20261123.tar.xz) · [Bit-mask proof](jsp404-twelve-label-masks-20261123.tar.xz) · [Theorem and instructions](jsp404-twelve-label-cover-20261123.md)
+
+At the time of this checkpoint, 87 of the 93 new geometric core certificates have passed their individual Lean builds and axiom checks. The verified angle interval for 21 points is 140 to 144 degrees. The exact value for 22 points remains 144 degrees.
+
 Snapshot date: 2026-11-18. **This is not a complete solution or an award claim.**
 
 This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
