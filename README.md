@@ -1,18 +1,29 @@
 # JSP-000404: verified partial Lean development
 
-## November 23, 2026 · Finite covering theorem for the 21-point case
+## November 24, 2026 · The 21-point angle is exactly 144°
 
-Two Lean proofs verify that every choice of twelve of the twenty direction labels contains one of the 2,214 listed cores. This covers all 125,970 choices. The first proof checks a propositional refutation. The second intersects eight bit masks, one for each omitted label. Both archives include pinned dependencies, source, checksums and reproduction instructions. [LRAT proof](jsp404-twelve-label-cover-20261123.tar.xz) · [Bit-mask proof](jsp404-twelve-label-masks-20261123.tar.xz) · [Theorem and instructions](jsp404-twelve-label-cover-20261123.md)
+Every set of 21 distinct points in the Euclidean plane contains three that form an angle of at least 144°. For every larger angle, there is a 21-point configuration whose angles are all smaller. The same sharp bound holds from 21 through 32 points. This verifies the last missing case among the 30 cardinalities from 3 through 32 in this project.
 
-At the time of this checkpoint, 87 of the 93 new geometric core certificates have passed their individual Lean builds and axiom checks. The verified angle interval for 21 points is 140 to 144 degrees. The exact value for 22 points remains 144 degrees.
+Sendov gives the numerical classification in Theorem 4.1 of his 1995 paper. This release contributes a Lean proof for these finite cases. The statement for arbitrary cardinalities remains open in this development. [Paper](https://doi.org/10.1007/BF01874605) · [Final Lean proof](TwentyoneExact.lean) · [Verification record](jsp404-twentyone-exact-20261124-verification.json)
 
-Snapshot date: 2026-11-18. **This is not a complete solution or an award claim.**
+The lower bound excludes 21 points with every angle below 144°. At most nine points can be of the one-arc type. Twelve points of the three-arc type would contain a forbidden core. Lean checked 93 new geometric exclusions and all 125,970 choices of twelve among twenty labels. The five-level binary construction gives the matching upper bound.
 
-This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
-maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
-classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
+### Download the checked proof
 
-## Download the checked 22-point proof
+[Part 1](jsp404-twentyone-exact-20261124.tar.xz.part01) · [Part 2](jsp404-twentyone-exact-20261124.tar.xz.part02) · [Part 3](jsp404-twentyone-exact-20261124.tar.xz.part03) · [Part 4](jsp404-twentyone-exact-20261124.tar.xz.part04) · [Part 5](jsp404-twentyone-exact-20261124.tar.xz.part05) · [Part 6](jsp404-twentyone-exact-20261124.tar.xz.part06) · [Part 7](jsp404-twentyone-exact-20261124.tar.xz.part07) · [Part 8](jsp404-twentyone-exact-20261124.tar.xz.part08) · [Part 9](jsp404-twentyone-exact-20261124.tar.xz.part09)
+
+The nine parts contain one archive with 3,712 files, including source, certificate inputs, the pinned dependency versions, and verification logs. Download all parts and both checksum files to the same directory. [Part checksums](jsp404-twentyone-exact-20261124.parts.sha256) · [Archive checksum](jsp404-twentyone-exact-20261124.tar.xz.sha256)
+
+```sh
+shasum -a 256 -c jsp404-twentyone-exact-20261124.parts.sha256
+cat jsp404-twentyone-exact-20261124.tar.xz.part0[1-9] > jsp404-twentyone-exact-20261124.tar.xz
+shasum -a 256 -c jsp404-twentyone-exact-20261124.tar.xz.sha256
+tar -xJf jsp404-twentyone-exact-20261124.tar.xz
+```
+
+The two earlier finite-cover proofs remain available. [November 23 checkpoint](https://github.com/jerrylijize1224-star/jsp404-lean-partial/commit/83fd6a899c0ec6262c6bd9a8355fdbf2f2d1087d) · [LRAT proof](jsp404-twelve-label-cover-20261123.tar.xz) · [Bit-mask proof](jsp404-twelve-label-masks-20261123.tar.xz)
+
+### Earlier 22-point download
 
 [Part 1](jsp404-twentytwo-exact-20261118.tar.xz.part01) · [Part 2](jsp404-twentytwo-exact-20261118.tar.xz.part02) · [Part 3](jsp404-twentytwo-exact-20261118.tar.xz.part03) · [Part checksums](jsp404-twentytwo-exact-20261118.parts.sha256) · [Archive checksum](jsp404-twentytwo-exact-20261118.tar.xz.sha256)
 
@@ -26,7 +37,17 @@ tar -xJf jsp404-twentytwo-exact-20261118.tar.xz
 
 Expected SHA-256 of the joined archive: `3de08cfa6d518e796c72b51f8d262bdc840d0f1ddba90ea3af49b0c8e342ae98`. Source paths below are inside that archive. The earlier 23-point snapshot remains available.
 
-## Exact ordinary value for twenty-two points
+Snapshot date: 2026-11-24. **This is not a complete solution or an award claim.**
+
+This project formalizes parts of JSP-000404 / Erdős 504, Blumenthal's
+maximum-angle problem, in Lean 4 with mathlib. The arbitrary-cardinality
+classification remains the unproved proposition `Prize.JSP404.SendovClaim`.
+
+## Exact ordinary value for twenty-one points
+
+For arbitrary finite planar sets this snapshot proves **alpha(21)=4*pi/5=144 degrees**, with the sharp bound throughout **21 through 32**. All ordinary cardinalities from **3 through 32** are now exact. Every configuration below 144 degrees has at most nine one-arc and eleven three-arc points. The lower bound uses 93 new checked exclusions and an LRAT/semantic cover of all 125,970 twelve-label sets; the five-level binary construction supplies the matching upper bound. See research/jsp404-twentyone-exact.md. The general SendovClaim remains unproved; the following earlier checkpoints are historical.
+
+## Retained exact value for twenty-two points
 
 This snapshot proves **alpha(22)=4*pi/5=144 degrees**, and `IsSharpBound` for **22<=N<=32**, for arbitrary finite planar point sets. The bound does not assume convexity, general position or attainment. With every angle below 144 degrees there can be at most nine one-arc points and twelve three-arc points. The latter bound follows from 24 new checked core exclusions, earlier exclusions, and a kernel-checked cover of all 77,520 thirteen-type sets. The existing binary planar construction supplies the matching upper bound. See `research/jsp404-twentytwo-exact.md`. The following checkpoints describe earlier stages; only 21 remains unresolved among ordinary sizes 3 to 32. This is a formalization of a value from Sendov's classification; no novelty claim is made.
 
@@ -421,11 +442,11 @@ nine- or eleven-point certificates. See
 
 ## Retained results and remaining work
 
-Exact ordinary values have been formalized for 3 through 20 and 22 through 32, as well as powers of two (exponent at least two) and one below powers of two (exponent at least three). At 21 points the currently proved interval is [140,144] degrees. The arbitrary-cardinality `SendovClaim` remains unproved.
+The exact numerical cases include every ordinary size from 3 through 32, powers of two (exponent at least two), and one below powers of two (exponent at least three). The arbitrary-cardinality SendovClaim has not been formalized.
 
 ## Verification and reproduction
 
-The full build passed (3847 jobs). All 6294 audit entries matched the ordered source list, including 869 new entries. 43 declarations are axiom-free. The only dependencies are Classical.choice, Quot.sound, propext. Source and raw local log hashes are listed in `research/logs/jsp404-shared22-verification-20261118.json`. Original definitions and dependency pins are unchanged.
+The full local build completed 5166 jobs. All 9068 ordered axiom reports match the audit source; 137 are axiom-free. The actual axiom union is Classical.choice, Quot.sound, propext. Source and log hashes are in research/logs/jsp404-shared21-verification.json.
 
 Pinned Lean: `leanprover/lean4:v4.34.0`.
 Pinned mathlib: `5ed2965256430c3649e86755f9576b54eca72435`.
