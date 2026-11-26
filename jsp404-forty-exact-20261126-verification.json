@@ -1,0 +1,233 @@
+{
+  "date_verified": "2026-11-24",
+  "date_standalone_rebuild": "2026-11-26",
+  "result": "alpha 40 = 9*pi/11 = 1620/11 degrees",
+  "theorem": "Prize.JSP404.alpha_forty",
+  "sharpness": "Prize.JSP404.forty_isSharpBound",
+  "scope": "All distinct finite planar configurations. Arbitrary-cardinality SendovClaim remains unproved.",
+  "remaining_first_band": "33 through 39. Certified interval [(2117/2645)*pi, (9/11)*pi].",
+  "following_band_bounds": "41 through 62. Certified interval [(9/11)*pi, (5/6)*pi].",
+  "capacity_counts": [
+    10,
+    27,
+    2
+  ],
+  "previous_exact_snapshot_git": "bef88f5e55a6076426588494146d0ef4eedd020f",
+  "build_jobs": 5171,
+  "audited_declarations": 9098,
+  "axiom_free_declarations": 137,
+  "standalone_build_jobs": 2662,
+  "standalone_project_proof_modules": 41,
+  "standalone_audited_declarations": 30,
+  "standalone_build_scope": "41 project modules built from copied sources with an empty local build directory and the pinned, locally cached mathlib dependencies.",
+  "new_theorem_dependencies": {
+    "Prize.JSP404.Sector22.cover": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.missing_covered": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.arc_offsets": [
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.star_offsets": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.slot_injective": [
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.slot_accepts": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.accepts_excludes_antipode": [
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.model_of_complex": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.bin_reverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.bin_close": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.coord_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.coord_range": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.raw_coord": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.ang_coord": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.classify": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.middle_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.card_le_ten_of_separated": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.arc_start": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.arc_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.group_offsets": [
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.five_window_band": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.triangle_not_banded": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.star_band": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.star_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.Sector22.Model.card_le_thirtynine": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.guaranteedAngle_nine_pi_elevenths_of_forty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.forty_isSharpBound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.alpha_forty": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.thirtythree_thirtynine_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "Prize.JSP404.fortyone_sixtytwo_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "lean_pin": "leanprover/lean4:v4.34.0",
+  "dependency_pins": {
+    "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+    "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+    "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+    "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+    "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+    "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+    "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+    "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+    "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  },
+  "all_project_source_files_in_standalone": {
+    "Prize/JSP404/Basic.lean": "3c7d576279ed91121740df659fcb0026e35d49b6691c23242de1ca45a6af0bce",
+    "Prize/JSP404/BinaryScaleConstruction.lean": "85ad5e7bcbe11f83b22e5118c7346068a029c2850453d60baab1337aa8f675e2",
+    "Prize/JSP404/ClusterApproximation.lean": "d81372f2d7bce2fdeaf1c9e455d207b15b8190961acc42178b1a2b2b82db9f84",
+    "Prize/JSP404/CompactDirectionSpace.lean": "83f2107b41abe8d0f98380b27438c66ffa902bee36aba6a5f900f5abe9f0faf9",
+    "Prize/JSP404/Counting.lean": "0f3b14b1cf3347e897c1c1df420a37b1c9c3cdfd19e51c5b5d063046f99d8208",
+    "Prize/JSP404/DirectionCover.lean": "6291d1cf070a3108e4eaa66299bc9068894aff11e1f741cad4f4de06f2d118d7",
+    "Prize/JSP404/EdgeDirectionLowerBound.lean": "f1cd206075433065aa2e17deb65ff0c91f28e9cbc47cdee31d4230a045f20010",
+    "Prize/JSP404/EquallySpacedBinaryAxes.lean": "bc977171c0404ec5ab0c760f7e8673a672e93369e9c4553b2fc7d7b64b3a1111",
+    "Prize/JSP404/FiniteAngleApproximation.lean": "99be7bda74da7e7619ab12630c3822618fed194eae0e76d57823a0a931389704",
+    "Prize/JSP404/FiniteCliqueCertificate.lean": "caded4cdc0c643fc0a63e54c20b7fd24915d702829dfad07b1be304fb649b004",
+    "Prize/JSP404/FiniteCliqueCover.lean": "c8c0fb86e1cb46fc190d67f7b2fb6a20c864282af5ed10804765acf25c20d6cb",
+    "Prize/JSP404/FinitePeriodicGap.lean": "fd192cf7823c4714d989d6c8e9868cfd16428f7d39a651ddc4c8def6703ac1d6",
+    "Prize/JSP404/FirstBandAxes.lean": "7f78a81b4eb98fbeb390919fa4655e3c61bd91a5490794d3f495c61a628ef615",
+    "Prize/JSP404/FirstBandConstruction.lean": "92e2b037847f51787875f0e87437403c9c5787e13eb49ef52f62a4948c00f576",
+    "Prize/JSP404/FirstBandTriangle.lean": "adc469bb21fb507d6b407b36c29a37126c3e985f9effd07bccdedbab66f9e492",
+    "Prize/JSP404/FortyExact.lean": "5cf4d560de30951c3334aa262b2903013a0d6f29c73e14b2fe77078576048007",
+    "Prize/JSP404/FourCentreConvex.lean": "d6af2513e11e17cfbe87b61d50963cf34ecc4e0451a28a7831ec807977f02725",
+    "Prize/JSP404/FourCentreConvexGeometry.lean": "25946def22e5c18deab2fab06a7fea3d2247ca1226d971e040125cf7fc9518f3",
+    "Prize/JSP404/FourCentreInterior.lean": "9c827959b078c8c5ffd4534684ab054f3009e6a735b2ac32591b8f7a0ec09b91",
+    "Prize/JSP404/FourCentreInteriorGeometry.lean": "60f31ab69c3e5d8fac62f98a4278f2c17c70ed5ea113ee02955b8db4b51eb43b",
+    "Prize/JSP404/FourCentreLocalIndex.lean": "bdf622662ae71d123a3131c40e3e0de43068d4ac28e6e16e1a710490937962c4",
+    "Prize/JSP404/GapIntervalCover.lean": "755ff6d328a4b02b2d9f2504d2c1d37164a349fe329c407ee690d7e1bf294bba",
+    "Prize/JSP404/GapSectorCounting.lean": "865c8971594455b76a1c2bc5246e9a8ed267a66d6dd3206b7a39c8596a57c29e",
+    "Prize/JSP404/GeneralAngleBounds.lean": "b9480b5ca3b4786f0564c71d5cd6c9c1dc9f1c31cc80d519cea5f63bad8417ae",
+    "Prize/JSP404/GeneralizedDirectionCover.lean": "4a26df97f876960c7f5910b594e08811229423edf9a0763deb85457c9a16f7ac",
+    "Prize/JSP404/IndexedCliqueCover.lean": "73320945c0c121b49c3a0f1590bd4dd27f4084b21f927a3aec31aca6b67ebc81",
+    "Prize/JSP404/ProjectiveCoordinates.lean": "5df9005e5bda6d3cb5bc97fd38d49596cea25a162ca9f7295e602ded9898f9af",
+    "Prize/JSP404/ProjectiveThreeDirections.lean": "5d8d8ca8bc8eed2f8aed34821beaafd1b597c111a30cfeb227fa4a8d83510c48",
+    "Prize/JSP404/QuantitativeLowerBound.lean": "9e29887bc8ddabafde364cbd30f85c3a2cd386486f5a10e369e8b0ad21e48ec8",
+    "Prize/JSP404/QuantitativeSectorCover.lean": "5a265b7d638a10ab8f988e9ba547dd40508e526f6627e86c72e46a80c711209b",
+    "Prize/JSP404/Sector22Angles.lean": "03fc0d7975602339c9bf286585d4ea363f4479c693001435b1a5ad0d366ea5ae",
+    "Prize/JSP404/Sector22Families.lean": "c2049091168ce3ee3051e4502e387416143ba4634c86fc34089a5330d26bef05",
+    "Prize/JSP404/Sector22Finite.lean": "f6593d4e7f21302eb801d7346b87bd4373d056863892729634b6c1e44452a5d0",
+    "Prize/JSP404/Sector22Windows.lean": "1d5400bf4db2e6abc4a5a0ed987681e4c129a7d7ec81c0fc5c4e75cd6a8aadf8",
+    "Prize/JSP404/Sector26Quantization.lean": "925a7a157f02505717a9632bebea9dad23978f0361d298ba3cfaeeeaa9e77ccc",
+    "Prize/JSP404/Sector26Types.lean": "b3fa688bbe531a3780245703cb38c4ebee22eecc608d9a6714313dc4f5f90469",
+    "Prize/JSP404/SectorCapacity.lean": "244c25c5f8c06d5f50b2cd1a9237a267ba357f564b5d5d1f167a28a60759cc02",
+    "Prize/JSP404/Sharpness.lean": "353a8d6078cd9fbd694445478c3977dddb967b238bcd5123935920a8a5152476",
+    "Prize/JSP404/StrictUniformLowerBound.lean": "c9e4fcb73fbdc75db6ee01bfacfdeeb7704f03c799e0d858f7a986f54c38dc96",
+    "Prize/JSP404/ThreeCentreCapacity.lean": "ba5489439a156cca0c0dba2eb6174d97d1e9f5a8313a04f23222fd25e7b514dc",
+    "Prize/JSP404/UniformSectorLowerBound.lean": "3713b7a8e81b715c2f88c5cdc45c6b16cf6ceefd94732a9581076516624a69ae"
+  },
+  "unchanged_original_target_sha256": {
+    "Prize/JSP404/Basic.lean": "3c7d576279ed91121740df659fcb0026e35d49b6691c23242de1ca45a6af0bce",
+    "Prize/JSP404/Target.lean": "fe517395815f45e102699d8fbce73ba937460a62f723e970d4689fbeee329fca"
+  },
+  "project_audit_source_sha256": "fb2fe7346b530ef88d02ac6414a7958ddc37041fe75799ca217463d0ae3adef6",
+  "project_build_log_sha256": "9f85bb36f4745fa6f96d35555141a7a58ae9dc664a6a67d396fa2b4203e27b24",
+  "project_audit_log_sha256": "1d5cb9eaed3d529c67a6e70510e3109e602769f3635fda07f974f9497601931c",
+  "standalone_build_log_sha256": "9d1a8efc1235292d5242e2a3b1048b1b638634450a64a88d5bd317a169598304",
+  "standalone_audit_log_sha256": "2568f86c7649c5ba92614f5649811e757ceeb68631936db9947fdd1bc55907ac",
+  "generator_sha256": "9d187c77570281ce41d36a349b57f98b249b65c0d1c1af94e0d17e194c87b7da",
+  "finite_sources_reproduced": true,
+  "attribution": "Numerical classification from B. Sendov (1995), Theorem 4.1 in the English paper, p. 42.",
+  "prior_art_scope": "Two Sendov papers were consulted. No exhaustive search for formalization priority."
+}

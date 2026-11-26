@@ -1,5 +1,27 @@
 # JSP-000404: verified partial Lean development
 
+## November 26, 2026 · The 40-point angle is exactly 1620/11 degrees
+
+Every set of 40 distinct points in the Euclidean plane contains three forming an angle of at least 9π/11 (about 147.272727°). For every larger threshold a 40-point configuration has all angles below it. The numerical value appears in Sendov's 1995 classification. This release gives a Lean proof for the 40-point case. [Final theorem](FortyExact.lean) · [Verification record](jsp404-forty-exact-20261126-verification.json) · [Paper](https://doi.org/10.1007/BF01874605)
+
+The proof sorts vertices into three families using 22 direction sectors. If all angles were strictly below 9π/11, those families could contain at most 10, 27 and 2 points, respectively. Their total would be at most 39. The existing three-cluster construction gives the matching upper bound.
+
+The standalone download includes all 41 project modules that this proof uses, pinned Lean and mathlib versions, and reproducible finite tables. All 41 modules rebuilt with an empty project build directory using the pinned mathlib cache. The full project passed 5,171 build jobs and 9,098 axiom reports. The final equality and sharpness theorem depend on propext, Classical.choice and Quot.sound. [Download the standalone proof](jsp404-forty-exact-20261126.tar.xz) · [SHA-256](jsp404-forty-exact-20261126.tar.xz.sha256)
+
+With Elan and Git installed, download the archive and checksum file and run the following commands.
+
+```sh
+shasum -a 256 -c jsp404-forty-exact-20261126.tar.xz.sha256
+tar -xJf jsp404-forty-exact-20261126.tar.xz
+cd jsp404-forty-exact-20261126
+shasum -a 256 -c MANIFEST.sha256
+lake exe cache get
+lake build
+lake env lean Prize/Audit.lean
+```
+
+The exact values for all 30 cardinalities from 3 through 32 were established in earlier releases. For 33 through 39 the verified interval is [(2117/2645)π, (9/11)π]. The 40-point lower bound also narrows the interval for 41 through 62 to [(9/11)π, (5/6)π]. The equality at 63 and 64 is 150°. The general classification remains unproved in this project. [Earlier 21-point release](https://github.com/jerrylijize1224-star/jsp404-lean-partial/commit/bef88f5e55a6076426588494146d0ef4eedd020f)
+
 ## November 24, 2026 · The 21-point angle is exactly 144°
 
 Every set of 21 distinct points in the Euclidean plane contains three that form an angle of at least 144°. For every larger angle, there is a 21-point configuration whose angles are all smaller. The same sharp bound holds from 21 through 32 points. This verifies the last missing case among the 30 cardinalities from 3 through 32 in this project.
